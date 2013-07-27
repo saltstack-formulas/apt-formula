@@ -3,8 +3,6 @@
 apt-get update:
   cmd.wait:
    - order: 130
-   - watch:
-     - file: /etc/apt/sources.list
 
 apt-get upgrade:
   cmd.wait:
