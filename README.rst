@@ -29,3 +29,11 @@ Runs ``apt-get update``.
 
 Runs ``apt-get upgrade``.
 
+``apt.transports.debtorrent``
+-------------------------------
+Installs ``apt-transport-debtorrent``.
+
+``apt.transports.https``
+--------------------------
+Installs ``apt-transport-https``.
+
