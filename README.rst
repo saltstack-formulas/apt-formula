@@ -14,17 +14,18 @@ Available states
 .. contents::
     :local:
 
-``dist-upgrade``
-----------------
+``apt.dist-upgrade``
+--------------------
 
-Runs apt-get dist-upgrade.
+Runs ``apt-get dist-upgrade``.
 
-``update``
-----------
+``apt.update``
+--------------
 
-Runs apt-get update.
+Runs ``apt-get update``.
 
-``upgrade``
------------
+``apt.upgrade``
+---------------
 
-Runs apt-get upgrade.
+Runs ``apt-get upgrade``.
+
