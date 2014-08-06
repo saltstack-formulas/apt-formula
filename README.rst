@@ -29,6 +29,13 @@ Runs ``apt-get update``.
 
 Runs ``apt-get upgrade``.
 
+
+``apt.ppa``
+-------------
+Installs ``python-software-properties``
+(``$ /usr/bin/apt-add-repository ppa:user/repository``).
+
+
 ``apt.transports.debtorrent``
 -------------------------------
 Installs ``apt-transport-debtorrent``.
