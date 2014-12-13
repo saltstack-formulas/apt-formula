@@ -5,5 +5,4 @@
 # e.g. /usr/bin/add-apt-repository
 
 python-software-properties:
-  pkg:
-    - installed
+  pkg.installed: []
