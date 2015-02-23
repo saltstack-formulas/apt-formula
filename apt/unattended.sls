@@ -47,6 +47,7 @@ apt_unattended_pakgs::
 {% set download_upgradeable_packages = salt['pillar.get']('apt:unattended:download_upgradeable_packages', '1') %}
 {% set unattended_upgrade = salt['pillar.get']('apt:unattended:unattended_upgrade', '1') %}
 {% set auto_clean_interval = salt['pillar.get']('apt:unattended:auto_clean_interval', '7') %}
+{% set verbose = salt['pillar.get']('apt:unattended:verbose', '2') %}
 
 {{ map.confd_dir }}/{{ map.periodic_config }}:
   file.managed:
@@ -56,3 +57,4 @@ apt_unattended_pakgs::
         APT::Periodic::Download-Upgradeable-Packages "{{ download_upgradeable_packages }}";
         APT::Periodic::Unattended-Upgrade "{{ unattended_upgrade }}";
         APT::Periodic::AutocleanInterval "{{ auto_clean_interval }}";
+        APT::Periodic::Verbose "{{ verbose }}";

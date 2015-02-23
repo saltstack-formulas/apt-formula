@@ -19,3 +19,4 @@ apt:
    download_upgradeable_packages: 1
    unattended_upgrade: 1
    auto_clean_interval: 7
+   verbose: 2
