@@ -1,0 +1,8 @@
+{% set map = salt['grains.filter_by']({
+    'Debian': {
+        'pkgs': ['unattended-upgrades'],
+        'confd_dir': '/etc/apt/apt.conf.d',
+        'unattended_config': '50unattended-upgrades',
+        'periodic_config': '02periodic',
+    },
+}, grain='os', merge=salt['pillar.get']('apt:lookup')) %}
