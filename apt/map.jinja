@@ -1,4 +1,4 @@
-{% set map = salt['grains.filter_by']({
+{% set apt = salt['grains.filter_by']({
     'Debian': {
         'pkgs': ['unattended-upgrades'],
         'confd_dir': '/etc/apt/apt.conf.d',
