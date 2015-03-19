@@ -1,5 +1,5 @@
 # This is the main state file for configuring unattended upgrades with apt
-{% from "apt/map.jinja" import apt with context %}
+{% from "apt/map.jinja" import apt as apt_map with context %}
 {% set apt = pillar.get('apt:unattended', {}) -%}
 {% set unattended_config_template = apt.get('unattended_config_template', 'salt://apt/templates/unattended_config.jinja') -%}
 {% set periodic_config_template = apt.get('periodic_config_template', 'salt://apt/templates/periodic_config.jinja') -%}
@@ -7,7 +7,7 @@
 apt_unattended_pakgs::
   pkg.installed:
     - pkgs:
-      {% for pkg in apt.pkgs %}
+      {% for pkg in apt_map.pkgs %}
       - {{ pkg }}
       {% endfor %}  
 
