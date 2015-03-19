@@ -1,11 +1,11 @@
 # This is the main state file for configuring unattended upgrades with apt
 
-{% from "apt/map.jinja" import map with context %}
+{% from "apt/map.jinja" import apt with context %}
 
 apt_unattended_pakgs::
   pkg.installed:
     - pkgs:
-      {% for pkg in map.pkgs %}
+      {% for pkg in apt.pkgs %}
       - {{ pkg }}
       {% endfor %}  
 
@@ -20,7 +20,7 @@ apt_unattended_pakgs::
 {% set automatic_reboot = salt['pillar.get']('apt:unattended:automatic_reboot', 'false') %}
 {% set dl_limit = salt['pillar.get']('apt:unattended:dl_limit', '0') %}
 
-{{ map.confd_dir }}/{{ map.unattended_config }}:
+{{ apt.confd_dir }}/{{ apt.unattended_config }}:
   file.managed:
     - contents: |
         Unattended-Upgrade::Origins-Pattern {
@@ -49,7 +49,7 @@ apt_unattended_pakgs::
 {% set auto_clean_interval = salt['pillar.get']('apt:unattended:auto_clean_interval', '7') %}
 {% set verbose = salt['pillar.get']('apt:unattended:verbose', '2') %}
 
-{{ map.confd_dir }}/{{ map.periodic_config }}:
+{{ apt.confd_dir }}/{{ apt.periodic_config }}:
   file.managed:
     - contents: |
         APT::Periodic::Enable "{{ enabled }}"; 
