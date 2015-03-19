@@ -11,7 +11,7 @@ apt_unattended_pakgs::
       - {{ pkg }}
       {% endfor %}  
 
-{{ apt.confd_dir }}/{{ apt.unattended_config }}:
+{{ apt_map.confd_dir }}/{{ apt_map.unattended_config }}:
   file.managed:
     - template: jinja
     - user: root
@@ -19,7 +19,7 @@ apt_unattended_pakgs::
     - mode: 644
     - source: {{ unattended_config_template }}
 
-{{ apt.confd_dir }}/{{ apt.periodic_config }}:
+{{ apt_map.confd_dir }}/{{ apt_map.periodic_config }}:
   file.managed:
     - template: jinja
     - user: root
