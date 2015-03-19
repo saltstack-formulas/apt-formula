@@ -1,6 +1,6 @@
 apt:
   unattended:
-    origins_pattern:
+    allowed_origins:
       - origin1
       - origin2  
     package_blacklist:    

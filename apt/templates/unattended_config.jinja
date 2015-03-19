@@ -1,0 +1,31 @@
+{% set apt = pillar.get('apt:unattended', {}) -%}
+{% set allowed_origins = apt.get('allowed_origins', ['${distro_id}:${distro_codename}-security']) -%}
+{% set package_blacklist = apt.get('package_blacklist', {}) -%}
+{% set auto_fix_interrupted_dpkg = apt.get('auto_fix_interrupted_dpkg', 'true') -%}
+{% set minimal_steps = apt.get('minimal_steps', 'false') -%}
+{% set install_on_shutdown = apt.get('install_on_shutdown', 'false') -%}
+{% set mail = apt.get('mail', 'root') -%}
+{% set mail_only_on_error = apt.get('mail_only_on_error', 'false') -%}
+{% set remove_unused_dependencies = apt.get('remove_unused_dependencies', 'true') -%}
+{% set automatic_reboot = apt.get('automatic_reboot', 'false') -%}
+{% set automatic_reboot_time = apt.get('automatic_reboot_time', 'now') -%}
+{% set dl_limit = apt.get('dl_limit', '0') -%}
+Unattended-Upgrade::Allowed-Origins {
+        {%- for pattern in allowed_origins %}
+        "{{ pattern }}";
+        {%- endfor %} 
+};
+Unattended-Upgrade::Package-Blacklist {
+        {%- for package in package_blacklist %}
+        "{{ package }}";
+        {%- endfor %} 
+};
+Unattended-Upgrade::AutoFixInterruptedDpkg "{{ auto_fix_interrupted_dpkg }}";
+Unattended-Upgrade::MinimalSteps "{{ minimal_steps }}";
+Unattended-Upgrade::InstallOnShutdown "{{ install_on_shutdown }}";
+Unattended-Upgrade::Mail "{{ mail }}";
+Unattended-Upgrade::MailOnlyOnError "{{ mail_only_on_error }}";
+Unattended-Upgrade::Remove-Unused-Dependencies "{{ remove_unused_dependencies }}";
+Unattended-Upgrade::Automatic-Reboot "{{ automatic_reboot }}";
+Unattended-Upgrade::Automatic-Reboot-Time "{{ automatic_reboot_time }}";
+Acquire::http::Dl-Limit "{{ dl_limit }}";
