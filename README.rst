@@ -14,7 +14,7 @@ Available states
 .. contents::
     :local:
 
-``apt.dist-upgrade``
+``apt.dist_upgrade``
 --------------------
 
 Runs ``apt-get dist-upgrade``.
