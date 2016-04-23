@@ -14,14 +14,14 @@ debian-archive-keyring:
   file.absent
   {% else %}
   file.managed:
-    - mode: 0644
+    - mode: '0644'
     - user: root
     - group: root
   {% endif %}
 
 {{ sources_list_dir }}:
   file.directory:
-    - mode: 0755
+    - mode: '0755'
     - user: root
     - group: root
     - clean: {{ clean_sources_list_d }}
@@ -50,3 +50,4 @@ debian-archive-keyring:
     - clean_file: true
   {%- endfor %}
 {% endfor %}
+
