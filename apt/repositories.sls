@@ -31,26 +31,22 @@ debian-archive-keyring:
 {%- set r_url = args.url or default_url %}
 {%- set r_distro = args.distro or 'stable' %}
 {%- set r_comps = args.comps|default(['main'])|join(' ') %}
+{%- set r_keyserver = args.keyserver if args.keyserver is defined else apt_map.default_keyserver %}
 
-{%- if "binary" in args.type|d(["binary"]) %}
+  {%- for type in args.type|d(['binary']) %}
+  {%- set r_type = 'deb-src' if type == 'source' else 'deb' %}
 {{ repo }}:
   pkgrepo.managed:
-    - name: deb {{ r_arch }} {{ r_url }} {{ r_distro }} {{ r_comps }}
+    - name: {{ r_type }} {{ r_arch }} {{ r_url }} {{ r_distro }} {{ r_comps }}
     - file: {{ sources_list_dir }}/{{ repo }}.list
+    {# You can use either keyid+keyserver or key_url. If both are provided
+       the latter will be used. #}
     {% if args.key_url is defined %}
     - key_url: {{ args.key_url }}
+    {% elif args.keyid is defined %}
+    - keyid: {{ args.keyid }}
+    - keyserver: {{ r_keyserver }}
     {% endif %}
     - clean_file: true
-{% endif %}
-
-{%- if "source" in args.type|d(["binary"]) %}
-{{ repo }}:
-  pkgrepo.managed:
-    - name: deb-src {{ r_arch }} {{ r_url }} {{ r_distro }} {{ r_comps }}
-    - file: {{ sources_list_dir }}/{{ repo }}.list
-    {% if args.key_url is defined %}
-    - key_url: {{ args.key_url }}
-    {% endif %}
-    - clean_file: true
-{% endif %}
+  {%- endfor %}
 {% endfor %}

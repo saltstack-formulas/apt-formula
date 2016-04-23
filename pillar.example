@@ -29,15 +29,19 @@ apt:
       distro: stable/updates
       url: http://security.debian.org
       comps: [main, contrib, non-free]
-      keyring_package: debian-keyring
-    security-testing:
-      distro: testing/updates
-      url: http://security.debian.org
-      comps: [main, contrib, non-free]
-      keyring_package: debian-keyring
+      arch: [amd64, i386]
+      type: [binary, source]
     updates:
       distro: stable-updates
       url: http://httpredir.debian.org/debian/
       comps: [main, contrib, non-free]
-      keyring_package: debian-keyring
-
+    my-fancy-repo:
+      distro: whatever/is/needed/here
+      url: http://my.repo.url
+      type: [source]
+      key_url: http://my.repo.url/GPG-KEY-my.repo
+    perconap-repo:
+      distro: stable
+      url: http://repo.percona.com/apt
+      keyid: CD2EFD2A
+      keyserver: pool.sks-keyservers.net
