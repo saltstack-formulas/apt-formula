@@ -1,4 +1,7 @@
 apt:
+  remove_sources_list: true
+  clean_sources_list_d: true
+
   unattended:
     allowed_origins:
       - origin1
@@ -6,17 +9,35 @@ apt:
     package_blacklist:    
       - package1
       - package2  
-   auto_fix_interrupted_dpkg: true     
-   minimal_steps: false
-   install_on_shutdown: false
-   mail: root
-   mail_only_on_error: false
-   remove_unused_dependencies: true
-   automatic_reboot: false
-   dl_limit: 0
-   enabled: 1
-   update_package_lists: 1
-   download_upgradeable_packages: 1
-   unattended_upgrade: 1
-   auto_clean_interval: 7
-   verbose: 2
+    auto_fix_interrupted_dpkg: true     
+    minimal_steps: false
+    install_on_shutdown: false
+    mail: root
+    mail_only_on_error: false
+    remove_unused_dependencies: true
+    automatic_reboot: false
+    dl_limit: 0
+    enabled: 1
+    update_package_lists: 1
+    download_upgradeable_packages: 1
+    unattended_upgrade: 1
+    auto_clean_interval: 7
+    verbose: 2
+
+  repositories:
+    security-stable:
+      distro: stable/updates
+      url: http://security.debian.org
+      comps: [main, contrib, non-free]
+      keyring_package: debian-keyring
+    security-testing:
+      distro: testing/updates
+      url: http://security.debian.org
+      comps: [main, contrib, non-free]
+      keyring_package: debian-keyring
+    updates:
+      distro: stable-updates
+      url: http://httpredir.debian.org/debian/
+      comps: [main, contrib, non-free]
+      keyring_package: debian-keyring
+
