@@ -1,0 +1,45 @@
+---
+driver:
+  name: vagrant
+
+platforms:
+  - name: debian-jessie64
+    driver_config:
+      box: ssplatt/salt-deb-8
+
+provisioner:
+  name: salt_solo
+  salt_version: 2015.8.8
+  is_file_root: true
+  grains:
+    os_family: Debian
+
+suites:
+  - name: repositories
+    provisioner:
+      state_top:
+        base:
+          '*':
+            - apt.repositories
+            - apt.update
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - apt
+        apt.sls:
+          apt:
+            remove_sources_list: true
+            clean_sources_list_d: true
+            repositories:
+              debian-jessie-source:
+                distro: jessie
+                url: http://httpredir.debian.org/debian
+                type: [source]
+                comps: [main, contrib, non-free]
+              dropbox-repo:
+                distro: jessie
+                url: http://linux.dropbox.com/debian
+                arch: [i386, amd64]
+                keyid: 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+                keyserver: pgp.mit.edu
