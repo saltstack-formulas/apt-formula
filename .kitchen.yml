@@ -32,12 +32,12 @@ suites:
             remove_sources_list: true
             clean_sources_list_d: true
             repositories:
-              debian-jessie-source:
+              debian-jessie:
                 distro: jessie
                 url: http://httpredir.debian.org/debian
                 type: [source]
                 comps: [main, contrib, non-free]
-              dropbox-repo:
+              dropbox:
                 distro: jessie
                 url: http://linux.dropbox.com/debian
                 arch: [i386, amd64]
