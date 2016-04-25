@@ -1,8 +1,30 @@
+{% set distribution = salt['grains.get']('lsb_distrib_codename') %}
+{% set distribution_updates = salt['grains.get']('lsb_distrib_codename') ~ '/updates' %}
+{% set arch = salt['grains.get']('osarch').split(' ') %}
 {% set apt = salt['grains.filter_by']({
     'Debian': {
         'pkgs': ['unattended-upgrades'],
         'confd_dir': '/etc/apt/apt.conf.d',
         'unattended_config': '50unattended-upgrades',
         'periodic_config': '10periodic',
+        'sources_list_dir': '/etc/apt/sources.list.d',
+        'remove_sources_list': false,
+        'clean_sources_list_d': false,
+        'default_url': 'http://httpredir.debian.org/debian/',
+        'repositories': {
+          'sane_default': {
+             'distro': distribution,
+             'url': 'http://httpredir.debian.org/debian/',
+             'arch': arch,
+             'comps': ['main'],
+          },
+          'security-stable': {
+             'distro': distribution_updates,
+             'url': 'http://security.debian.org/',
+             'arch': arch,
+             'comps': ['main'],
+          },
+       },
     },
 }, merge=salt['pillar.get']('apt:lookup'), default='Debian') %}
+

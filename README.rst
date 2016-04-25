@@ -29,6 +29,15 @@ Runs ``apt-get update``.
 
 Runs ``apt-get upgrade``.
 
+``apt.repositories``
+---------------
+
+Allows you to configure and manage repositories from pillar. Check ``pillar.example``
+to see possible values. If used and no repositories are provided, sane default
+values from ``map.jinja`` are used.
+
+Check https://wiki.debian.org/SourcesList for an explanation about the resulting
+files structure.
 
 ``apt.ppa``
 -------------
