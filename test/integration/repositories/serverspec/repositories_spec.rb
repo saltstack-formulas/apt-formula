@@ -25,7 +25,7 @@ describe 'apt.repositories' do
     its(:content) { should match('deb-src http://httpredir.debian.org/debian jessie contrib non-free main') }
   end
 
-  describe file('/etc/apt/sources.list.d/dropbox-repo.list') do
+  describe file('/etc/apt/sources.list.d/dropbox-binary.list') do
     it { should exist }
     it { should be_mode 644 }
     it { should be_owned_by 'root' }

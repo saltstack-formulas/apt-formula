@@ -35,10 +35,11 @@ debian-archive-keyring:
 
   {%- for type in args.type|d(['binary']) %}
   {%- set r_type = 'deb-src' if type == 'source' else 'deb' %}
-{{ repo }}:
+
+{{ repo }}{{ type }}:
   pkgrepo.managed:
     - name: {{ r_type }} {{ r_arch }} {{ r_url }} {{ r_distro }} {{ r_comps }}
-    - file: {{ sources_list_dir }}/{{ repo }}.list
+    - file: {{ sources_list_dir }}/{{ repo }}-{{ type }}.list
     {# You can use either keyid+keyserver or key_url. If both are provided
        the latter will be used. #}
     {% if args.key_url is defined %}
