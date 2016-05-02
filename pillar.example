@@ -2,6 +2,9 @@ apt:
   remove_sources_list: true
   clean_sources_list_d: true
 
+  remove_preferences: true
+  clean_preferences_d: true
+
   unattended:
     allowed_origins:
       - origin1
@@ -35,13 +38,35 @@ apt:
       distro: stable-updates
       url: http://httpredir.debian.org/debian/
       comps: [main, contrib, non-free]
-    my-fancy-repo:
-      distro: whatever/is/needed/here
-      url: http://my.repo.url
+    raspbian:
+      distro: wheezy
+      url: http://archive.raspbian.org/raspbian
       type: [source]
-      key_url: http://my.repo.url/GPG-KEY-my.repo
-    perconap-repo:
-      distro: stable
-      url: http://repo.percona.com/apt
-      keyid: CD2EFD2A
-      keyserver: pool.sks-keyservers.net
+      key_url: https://archive.raspbian.org/raspbian.public.key
+    debian-jessie:
+      distro: jessie
+      url: http://httpredir.debian.org/debian
+      type: [source]
+      comps: [main, contrib, non-free]
+    dropbox:
+      distro: jessie
+      url: http://linux.dropbox.com/debian
+      arch: [i386, amd64]
+      keyid: 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+      keyserver: pgp.mit.edu
+
+  preferences:
+    00-rspamd:
+      package: rspamd
+      pin: origin rspamd.com
+      priority: 650
+    01-all:
+      pin: release stable
+      priority: 610
+    02-all:
+      pin: release testing
+      priority: 600
+    03-all:
+      pin: release unstable
+      priority: 50
+
