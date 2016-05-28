@@ -15,6 +15,7 @@
         'remove_preferences': false,
         'clean_preferences_d': false,
         'clean_conf_d': false,
+        'remove_apt_conf': false,
         'default_keyserver': 'pool.sks-keyservers.net',
         'default_url': 'http://deb.debian.org/debian/',
         'default_keyring_package': 'debian-archive-keyring',
@@ -31,6 +32,6 @@
              'arch': arch,
              'comps': ['main'],
           },
-       },
+        },
     },
 }, merge=salt['pillar.get']('apt:lookup'), default='Debian') %}
