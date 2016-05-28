@@ -13,22 +13,22 @@
         'preferences_dir': '/etc/apt/preferences.d',
         'remove_preferences': false,
         'clean_preferences_d': false,
+        'clean_conf_d': false,
         'default_keyserver': 'pool.sks-keyservers.net',
         'default_url': 'http://httpredir.debian.org/debian/',
         'repositories': {
           'sane_default': {
-             'distro': distribution,
-             'url': 'http://httpredir.debian.org/debian/',
-             'arch': arch,
-             'comps': ['main'],
+            'distro': distribution,
+            'url': 'http://httpredir.debian.org/debian/',
+            'arch': arch,
+            'comps': ['main'],
           },
           'security-stable': {
-             'distro': distribution_updates,
-             'url': 'http://security.debian.org/',
-             'arch': arch,
-             'comps': ['main'],
+            'distro': distribution_updates,
+            'url': 'http://security.debian.org/',
+            'arch': arch,
+            'comps': ['main'],
           },
        },
     },
 }, merge=salt['pillar.get']('apt:lookup'), default='Debian') %}
-
