@@ -8,7 +8,7 @@ apt:
   remove_preferences: true
   clean_preferences_d: true
 
-  conf:
+  apt_conf_d:
     30release:
       'APT::Default-Release': stable
     '40dpkg-options':
