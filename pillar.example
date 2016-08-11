@@ -8,11 +8,11 @@ apt:
   unattended:
     allowed_origins:
       - origin1
-      - origin2  
-    package_blacklist:    
+      - origin2
+    package_blacklist:
       - package1
-      - package2  
-    auto_fix_interrupted_dpkg: true     
+      - package2
+    auto_fix_interrupted_dpkg: true
     minimal_steps: false
     install_on_shutdown: false
     mail: root
