@@ -35,4 +35,9 @@
       - "{{ 'Package: ' ~ p_package }}"
       - "{{ 'Pin: ' ~ args.pin }}"
       - "{{ 'Pin-Priority: ' ~ args.priority }}"
+{% if 'explanation' in args %}
+{% for explanation in args.explanation %}
+      - "{{ 'Explanation: ' ~ explanation }}"
+{% endfor %}
+{% endif %}
 {% endfor %}
