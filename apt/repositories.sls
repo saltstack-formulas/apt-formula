@@ -10,10 +10,10 @@ debian-archive-keyring:
   pkg.installed
 
 /etc/apt/sources.list:
-  {% if remove_sources_list %}
-  file.absent
-  {% else %}
   file.managed:
+  {%- if remove_sources_list %}
+    - contents: ''
+  {%- else %}
     - mode: '0644'
     - user: root
     - group: root
