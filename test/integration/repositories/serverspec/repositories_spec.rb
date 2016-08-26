@@ -7,7 +7,8 @@ describe 'apt.repositories' do
   end
 
   describe file('/etc/apt/sources.list') do
-    it { should_not exist }
+    it { should exist }
+    its(:size) { should eq 0 }
   end
 
   describe file('/etc/apt/sources.list.d') do
