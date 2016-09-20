@@ -4,7 +4,7 @@
 {% set unattended_config_template = apt.get('unattended_config_template', 'salt://apt/templates/unattended_config.jinja') -%}
 {% set periodic_config_template = apt.get('periodic_config_template', 'salt://apt/templates/periodic_config.jinja') -%}
 
-apt_unattended_pakgs::
+apt_unattended_pkgs:
   pkg.installed:
     - pkgs:
       {% for pkg in apt_map.pkgs %}
