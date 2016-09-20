@@ -27,6 +27,18 @@ apt:
     auto_clean_interval: 7
     verbose: 2
 
+  listchanges:
+    profiles:
+      cmdline:
+        frontend: pager
+      apt:
+        frontend: pager
+        email_address: root
+        confirm: 1
+      custom:
+        frontend: browser
+        browser: mozilla
+
   repositories:
     security-stable:
       distro: stable/updates
