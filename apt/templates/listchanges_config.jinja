@@ -1,13 +1,12 @@
-{% set apt = pillar.get('apt', {}) -%}
-{% set unattended = apt.get('listchanges', {}) -%}
-{%- for profile_name, profile_details in listchanges.get('profiles', {}).items() %}
-  {%- set frontend = profile_details.get('frontend', None) %}
-  {%- set email_address = profile_details.get('email_address', None) %}
-  {%- set confirm = profile_details.get('confirm', None) %}
-  {%- set save_seen = profile_details.get('save_seen', None) %}
-  {%- set which  = profile_details.get('which', None) %}
-  {%- set browser = profile_details.get('browser', None %}
-
+{%- set apt = pillar.get('apt', {}) -%}
+{%- set listchanges = apt.get('listchanges', {}) -%}
+{%- for profile_name, profile_details in listchanges.get('profiles', {}).items() -%}
+  {%- set frontend = profile_details.get('frontend', None) -%}
+  {%- set email_address = profile_details.get('email_address', None) -%}
+  {%- set confirm = profile_details.get('confirm', None) -%}
+  {%- set save_seen = profile_details.get('save_seen', None) -%}
+  {%- set which  = profile_details.get('which', None) -%}
+  {%- set browser = profile_details.get('browser', None) -%}
 [{{ profile_name }}]
 {%- if frontend != None %}
 frontend={{ frontend }}
@@ -26,6 +25,6 @@ which={{ which }}
 {%- endif %}
 {%- if browser != None %}
 browser={{ browser }}
-{%- endif %}
+{% endif %}
 
-{%- endfor %}
+{% endfor %}
