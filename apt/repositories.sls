@@ -11,12 +11,12 @@ debian-archive-keyring:
 
 /etc/apt/sources.list:
   file.managed:
-  {%- if remove_sources_list %}
-    - contents: ''
-  {%- else %}
     - mode: '0644'
     - user: root
     - group: root
+  {% if remove_sources_list %}
+    - contents: ''
+    - contents_newline: False
   {% endif %}
 
 {{ sources_list_dir }}:
