@@ -5,6 +5,28 @@ apt:
   remove_preferences: true
   clean_preferences_d: true
 
+  apt_conf_d:
+    30release:
+      'APT::Default-Release': stable
+    '40dpkg-options':
+      'Dpkg::Options':
+        - '--force-confdef'
+        - '--force-confold'
+    60proxy:
+      'Acquire::ftp':
+        Proxy: "ftp://127.0.0.1/"
+        'Proxy::http.us.debian.org': DIRECT
+        ProxyLogin:
+          - "USER $(PROXY_USER)"
+          - "PASS $(PROXY_PASS)"
+          - "USER $(SITE_USER)@$(SITE):$(SITE_PORT)"
+          - "PASS $(SITE_PASS)"
+      DSelect:
+        Clean: auto
+        Options: -f
+        UpdateOptions: ""
+        PromptAfterUpdate: "no"
+
   unattended:
     allowed_origins:
       - origin1
@@ -81,4 +103,3 @@ apt:
     03-all:
       pin: release unstable
       priority: 50
-
