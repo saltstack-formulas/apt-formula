@@ -9,7 +9,7 @@ apt_unattended_pkgs:
     - pkgs:
       {% for pkg in apt_map.pkgs %}
       - {{ pkg }}
-      {% endfor %}  
+      {% endfor %}
 
 {{ apt_map.confd_dir }}/{{ apt_map.unattended_config }}:
   file.managed:

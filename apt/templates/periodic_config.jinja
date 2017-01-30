@@ -6,7 +6,7 @@
 {% set unattended_upgrade = unattended.get('unattended_upgrade', '1') -%}
 {% set auto_clean_interval = unattended.get('auto_clean_interval', '7') -%}
 {% set verbose = unattended.get('verbose', '2') -%}
-APT::Periodic::Enable "{{ enabled }}"; 
+APT::Periodic::Enable "{{ enabled }}";
 APT::Periodic::Update-Package-Lists "{{ update_package_lists }}";
 APT::Periodic::Download-Upgradeable-Packages "{{ download_upgradeable_packages }}";
 APT::Periodic::Unattended-Upgrade "{{ unattended_upgrade }}";

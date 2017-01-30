@@ -11,12 +11,12 @@ debian-archive-keyring:
 
 /etc/apt/sources.list:
   file.managed:
-  {%- if remove_sources_list %}
-    - contents: ''
-  {%- else %}
     - mode: '0644'
     - user: root
     - group: root
+  {% if remove_sources_list %}
+    - contents: ''
+    - contents_newline: False
   {% endif %}
 
 {{ sources_list_dir }}:
@@ -36,7 +36,7 @@ debian-archive-keyring:
   {%- for type in args.type|d(['binary']) %}
   {%- set r_type = 'deb-src' if type == 'source' else 'deb' %}
 
-{{ repo }}{{ type }}:
+{{ r_type }} {{ repo }}:
   pkgrepo.managed:
     - name: {{ r_type }} {{ r_arch }} {{ r_url }} {{ r_distro }} {{ r_comps }}
     - file: {{ sources_list_dir }}/{{ repo }}-{{ type }}.list
@@ -49,6 +49,6 @@ debian-archive-keyring:
     - keyserver: {{ r_keyserver }}
     {% endif %}
     - clean_file: true
+
   {%- endfor %}
 {% endfor %}
-

@@ -14,12 +14,12 @@
 Unattended-Upgrade::Allowed-Origins {
         {%- for pattern in allowed_origins %}
         "{{ pattern }}";
-        {%- endfor %} 
+        {%- endfor %}
 };
 Unattended-Upgrade::Package-Blacklist {
         {%- for package in package_blacklist %}
         "{{ package }}";
-        {%- endfor %} 
+        {%- endfor %}
 };
 Unattended-Upgrade::AutoFixInterruptedDpkg "{{ auto_fix_interrupted_dpkg }}";
 Unattended-Upgrade::MinimalSteps "{{ minimal_steps }}";
