@@ -12,6 +12,10 @@ apt:
     package_blacklist:
       - package1
       - package2
+    origins_patterns:
+      - origin=SaltStack
+      - origin=Debian,archive=stable,label=Debian-Security
+      - origin=Debian,archive=oldstable,label=Debian-Security
     auto_fix_interrupted_dpkg: true
     minimal_steps: false
     install_on_shutdown: false

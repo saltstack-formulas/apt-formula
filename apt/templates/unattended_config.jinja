@@ -1,6 +1,7 @@
 {% set apt = pillar.get('apt', {}) -%}
 {% set unattended = apt.get('unattended', {}) -%}
 {% set allowed_origins = unattended.get('allowed_origins', ['${distro_id}:${distro_codename}-security']) -%}
+{% set origins_patterns = unattended.get('origins_patterns', ['origin=Debian,archive=stable,label=Debian-Security']) -%}
 {% set package_blacklist = unattended.get('package_blacklist', {}) -%}
 {% set auto_fix_interrupted_dpkg = unattended.get('auto_fix_interrupted_dpkg', 'true') -%}
 {% set minimal_steps = unattended.get('minimal_steps', 'false') -%}
@@ -13,6 +14,11 @@
 {% set dl_limit = unattended.get('dl_limit', '0') -%}
 Unattended-Upgrade::Allowed-Origins {
         {%- for pattern in allowed_origins %}
+        "{{ pattern }}";
+        {%- endfor %}
+};
+Unattended-Upgrade::Origins-Pattern {
+        {%- for pattern in origins_patterns %}
         "{{ pattern }}";
         {%- endfor %}
 };
