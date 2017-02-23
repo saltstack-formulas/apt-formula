@@ -21,7 +21,7 @@ Unattended-Upgrade::Origins-Pattern {
         {%- for pattern in origins_patterns %}
         "{{ pattern }}";
         {%- endfor %}
-}
+};
 Unattended-Upgrade::Package-Blacklist {
         {%- for package in package_blacklist %}
         "{{ package }}";
