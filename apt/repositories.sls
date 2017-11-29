@@ -44,7 +44,12 @@ apt_key {{ args.key_url }}:
         {{ key_body|indent(8) }}
     {%- endif %}
   {%- elif args.keyid is defined %}
-    {%- if args.keyid not in salt['pkg.get_repo_keys']().keys() %}
+    {%- set long_keys = salt['pkg.get_repo_keys']().keys() %}
+    {%- set short_keys = [] %}
+    {%- for long_key in long_keys %}
+    {%-   do short_keys.append(long_key[-8:]) %}
+    {%- endfor %}
+    {%- if args.keyid not in long_keys and args.keyid not in short_keys %}
 apt_key {{ args.keyid }}:
   module.run:
     - name: pkg.add_repo_key
