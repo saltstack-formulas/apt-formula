@@ -37,7 +37,7 @@ debian-archive-keyring:
     {%- set key_body = salt['http.query'](args.key_url).get('body', '') %}
     {%- set key_id = salt['cmd.shell']('apt-key adv --with-fingerprint --with-colons | grep pub', stdin=key_body).split(':')[4] %}
     {%- if key_id not in salt['pkg.get_repo_keys']().keys() %}
-apt_key {{ args.key_url }}:
+apt_key {{ repo }} {{ args.key_url }}:
   module.run:
     - name: pkg.add_repo_key
     - text: |
@@ -50,7 +50,7 @@ apt_key {{ args.key_url }}:
     {%-   do short_keys.append(long_key[-8:]) %}
     {%- endfor %}
     {%- if args.keyid not in long_keys and args.keyid not in short_keys %}
-apt_key {{ args.keyid }}:
+apt_key {{ repo }} {{ args.keyid }}:
   module.run:
     - name: pkg.add_repo_key
     - keyserver: {{ r_keyserver }}
