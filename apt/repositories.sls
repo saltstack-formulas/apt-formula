@@ -35,8 +35,9 @@ debian-archive-keyring:
 
   {%- if args.key_url is defined %}
     {%- set key_body = salt['http.query'](args.key_url).get('body', '') %}
-    {%- set key_id = salt['cmd.run']('gpg --dry-run --with-colons', stdin=key_body).split(':')[4] %}
+    {%- set key_id = salt['cmd.shell']('apt-key adv --with-fingerprint --with-colons | grep pub', stdin=key_body).split(':')[4] %}
     {%- if key_id not in salt['pkg.get_repo_keys']().keys() %}
+    {{ key_id }}
 apt_key {{ args.key_url }}:
   module.run:
     - name: pkg.add_repo_key
