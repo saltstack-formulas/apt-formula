@@ -73,7 +73,13 @@ apt:
     intranet:
       distro: stretch
       url: http://intranet.example.org
-      opts: "[trusted=yes]"
+      opts: "trusted=yes"
+    extranet:
+      distro: stretch
+      url: https://extranet.example.org
+      opts:
+        trusted: 'yes'
+        another: whatever
 
   preferences:
     00-rspamd:

@@ -26,11 +26,32 @@ debian-archive-keyring:
     - group: root
     - clean: {{ clean_sources_list_d }}
 
+
+
 {% for repo, args in repositories.iteritems() %}
-{%- set r_arch = '[arch=' ~ args.arch|join(',') ~ ']' if args.arch is defined else '' %}
+
+{% set r_opts = '' %}
+{%- set r_arch = 'arch=' ~ args.arch|join(',') if args.arch is defined else '' %}
+{% if args.opts is defined %}
+  {% if args.opts is string %}
+    {% set r_opts = args.opts %}
+  {% else %}
+    {% set r_opts_list = [] %}
+    {%- for k, v in args.opts.items() %}
+      {% do r_opts_list.append(' ' ~ k ~ '=' ~ v) %}
+    {%- endfor %}
+    {% set r_opts =  r_opts_list|join(' ') %}
+  {% endif %}
+{% endif %}
+
+{% if r_arch != '' or r_opts != '' %}
+  {% set r_options = '[' ~ r_arch ~ ' ' ~ r_opts ~ ' ]' %}
+{% else %}
+  {% set r_options = '' %}
+{% endif %}
+
 {%- set r_url = args.url or default_url %}
 {%- set r_distro = args.distro or 'stable' %}
-{%- set r_opts = args.opts if args.opts is defined else '' %}
 {%- set r_comps = args.comps|default(['main'])|join(' ') %}
 {%- set r_keyserver = args.keyserver if args.keyserver is defined else apt_map.default_keyserver %}
 
@@ -39,7 +60,7 @@ debian-archive-keyring:
 
 {{ r_type }} {{ repo }}:
   pkgrepo.managed:
-    - name: {{ r_type }} {{ r_arch }} {{ r_opts }} {{ r_url }} {{ r_distro }} {{ r_comps }}
+    - name: {{ r_type }} {{ r_options }} {{ r_url }} {{ r_distro }} {{ r_comps }}
     - file: {{ sources_list_dir }}/{{ repo }}-{{ type }}.list
     {# You can use either keyid+keyserver or key_url. If both are provided
        the latter will be used. #}
