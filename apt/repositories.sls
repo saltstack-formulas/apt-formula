@@ -30,7 +30,7 @@ debian-archive-keyring:
 {%- set r_arch = '[arch=' ~ args.arch|join(',') ~ ']' if args.arch is defined else '' %}
 {%- set r_url = args.url or default_url %}
 {%- set r_distro = args.distro or 'stable' %}
-{%- set r_opts = args.opts or '' %}
+{%- set r_opts = args.opts if args.opts is defined else '' %}
 {%- set r_comps = args.comps|default(['main'])|join(' ') %}
 {%- set r_keyserver = args.keyserver if args.keyserver is defined else apt_map.default_keyserver %}
 
