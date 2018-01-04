@@ -30,6 +30,7 @@ debian-archive-keyring:
 {%- set r_arch = '[arch=' ~ args.arch|join(',') ~ ']' if args.arch is defined else '' %}
 {%- set r_url = args.url or default_url %}
 {%- set r_distro = args.distro or 'stable' %}
+{%- set r_opts = args.opts or '' %}
 {%- set r_comps = args.comps|default(['main'])|join(' ') %}
 {%- set r_keyserver = args.keyserver if args.keyserver is defined else apt_map.default_keyserver %}
 
@@ -38,7 +39,7 @@ debian-archive-keyring:
 
 {{ r_type }} {{ repo }}:
   pkgrepo.managed:
-    - name: {{ r_type }} {{ r_arch }} {{ r_url }} {{ r_distro }} {{ r_comps }}
+    - name: {{ r_type }} {{ r_arch }} {{ r_opts }} {{ r_url }} {{ r_distro }} {{ r_comps }}
     - file: {{ sources_list_dir }}/{{ repo }}-{{ type }}.list
     {# You can use either keyid+keyserver or key_url. If both are provided
        the latter will be used. #}

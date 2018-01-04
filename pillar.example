@@ -70,6 +70,10 @@ apt:
       arch: [i386, amd64]
       keyid: 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
       keyserver: hkp://pgp.mit.edu:80
+    intranet:
+      distro: stretch
+      url: http://intranet.example.org
+      opts: "[trusted=yes]"
 
   preferences:
     00-rspamd:
