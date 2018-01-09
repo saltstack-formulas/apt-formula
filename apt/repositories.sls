@@ -38,7 +38,7 @@ debian-archive-keyring:
   {% else %}
     {% set r_opts_list = [] %}
     {%- for k, v in args.opts.items() %}
-      {% do r_opts_list.append(' ' ~ k ~ '=' ~ v) %}
+      {% do r_opts_list.append(k ~ '=' ~ v) %}
     {%- endfor %}
     {% set r_opts =  r_opts_list|join(' ') %}
   {% endif %}
