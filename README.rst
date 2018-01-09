@@ -54,6 +54,9 @@ and ``man 5 apt_preferences`` for an explanation about the resulting files struc
 Installs ``python-software-properties``
 (``$ /usr/bin/apt-add-repository ppa:user/repository``).
 
+``apt.unattended``
+------------------
+Installs and configures ``unattended-upgrades``
 
 ``apt.transports.debtorrent``
 -------------------------------
