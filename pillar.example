@@ -52,7 +52,7 @@ apt:
       type: [binary, source]
     updates:
       distro: stable-updates
-      url: http://httpredir.debian.org/debian/
+      url: http://deb.debian.org/debian/
       comps: [main, contrib, non-free]
     raspbian:
       distro: wheezy
@@ -61,7 +61,7 @@ apt:
       key_url: https://archive.raspbian.org/raspbian.public.key
     debian-jessie:
       distro: jessie
-      url: http://httpredir.debian.org/debian
+      url: http://deb.debian.org/debian
       type: [source]
       comps: [main, contrib, non-free]
     dropbox:
