@@ -16,6 +16,7 @@
         'clean_preferences_d': false,
         'default_keyserver': 'pool.sks-keyservers.net',
         'default_url': 'http://deb.debian.org/debian/',
+        'default_keyring_package': 'debian-archive-keyring',
         'repositories': {
           'sane_default': {
              'distro': distribution,
@@ -32,4 +33,3 @@
        },
     },
 }, merge=salt['pillar.get']('apt:lookup'), default='Debian') %}
-
