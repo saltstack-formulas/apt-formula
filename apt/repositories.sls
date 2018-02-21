@@ -5,8 +5,9 @@
 {% set sources_list_dir = apt.get('sources_list_dir', apt_map.sources_list_dir) %}
 {% set repositories = apt.get('repositories', apt_map.repositories) %}
 {% set default_url = apt.get('default_url', apt_map.default_url) %}
+{% set keyring_package = apt.get('keyring_package', apt_map.default_keyring_package) %}
 
-debian-archive-keyring:
+{{ keyring_package }}:
   pkg.installed
 
 /etc/apt/sources.list:
