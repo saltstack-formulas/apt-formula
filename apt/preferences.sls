@@ -23,7 +23,7 @@
     - group: root
     - clean: {{ clean_preferences_d }}
 
-{% for pref_file, args in preferences.iteritems() %}
+{% for pref_file, args in preferences.items() %}
 {%- set p_package = args.package if args.package is defined else '*' %}
 
 {{ preferences_dir }}/{{ pref_file }}:

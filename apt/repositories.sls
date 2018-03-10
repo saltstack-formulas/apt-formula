@@ -29,7 +29,7 @@
 
 
 
-{% for repo, args in repositories.iteritems() %}
+{% for repo, args in repositories.items() %}
 
 {% set r_opts = '' %}
 {%- set r_arch = 'arch=' ~ args.arch|join(',') if args.arch is defined else '' %}
