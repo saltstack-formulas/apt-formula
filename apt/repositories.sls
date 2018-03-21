@@ -18,6 +18,8 @@
   {% if remove_sources_list %}
     - contents: ''
     - contents_newline: False
+  {% else %}
+    - replace: False
   {% endif %}
 
 {{ sources_list_dir }}:
