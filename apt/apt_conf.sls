@@ -4,11 +4,17 @@
 {% set clean_apt_conf_d = salt['pillar.get']('apt:clean_apt_conf_d', apt_map.clean_apt_conf_d) %}
 {% set apt_conf_d = salt['pillar.get']('apt:apt_conf_d', apt_map.apt_conf_d) %}
 
-{% if remove_apt_conf %}
 /etc/apt/apt.conf:
-  file:
-    - absent
-{% endif %}
+  file.managed:
+    - mode: '0644'
+    - user: root
+    - group: root
+  {% if remove_apt_conf %}
+    - contents: ''
+    - contents_newline: False
+  {% else %}
+    - replace: False
+  {% endif %}
 
 {{ confd_dir }}:
   file.directory:
