@@ -1,0 +1,30 @@
+{%- macro print(mname, mvalue) %}
+  {%- if mvalue is string %}
+  {{ mname }} "{{ mvalue }}";
+  {%- elif mvalue is sequence %}
+  {{ mname }} {
+    {%- for item in mvalue %}
+    "{{ item }}";
+    {%- endfor %}
+  };
+  {%- endif %}
+{%- endmacro -%}
+// This file is managed by salt
+{%- for opt, opt_data in data|dictsort -%}
+  {%- if opt_data is string %}
+{{ opt }} "{{ opt_data }}";
+  {%- elif opt_data is mapping %}
+{{ opt }}
+{
+    {%- for name, value in opt_data|dictsort %}
+  {{- print(name, value) }}
+    {%- endfor %}
+};
+  {%- elif opt_data is sequence %}
+{{ opt }} {
+    {%- for item in opt_data %}
+  "{{ item }}";
+    {%- endfor %}
+};
+  {%- endif %}
+{%- endfor -%}
