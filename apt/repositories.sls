@@ -74,6 +74,16 @@
     - keyserver: {{ r_keyserver }}
     {% endif %}
     - clean_file: true
+    - refresh: False
+    - refresh_db: False
+    - onchanges_in:
+      - module: apt.refresh_db
 
   {%- endfor %}
 {% endfor %}
+
+{% if repositories %}
+apt.refresh_db:
+  module.run:
+    - name: pkg.refresh_db
+{% endif %}
