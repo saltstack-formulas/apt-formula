@@ -1,6 +1,13 @@
 apt:
   # Set the right keyring for the distro (ie ubuntu-keyring or ...)
+  {% if grains['os'] == 'Debian' %}
   keyring_package: debian-archive-keyring
+  {% elif grains['os'] == 'Ubuntu' %}
+  keyring_package: ubuntu-keyring
+  {% elif grains['os'] == 'Mint' %}
+  keyring_package: linuxmint-keyring
+  {% endif %}
+
   
   remove_sources_list: true
   clean_sources_list_d: true
