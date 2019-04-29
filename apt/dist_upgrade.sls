@@ -1,4 +1,4 @@
-apt-get dist-upgrade:
+apt-get -y dist-upgrade:
   cmd.wait:
     - watch:
       - file: /etc/apt/sources.list

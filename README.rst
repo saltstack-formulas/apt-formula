@@ -17,17 +17,17 @@ Available states
 ``apt.dist_upgrade``
 --------------------
 
-Runs ``apt-get dist-upgrade``.
+Runs ``apt-get -y dist-upgrade``.
 
 ``apt.update``
 --------------
 
-Runs ``apt-get update``.
+Runs ``apt-get -y update``.
 
 ``apt.upgrade``
 ---------------
 
-Runs ``apt-get upgrade``.
+Runs ``apt-get -y upgrade``.
 
 ``apt.repositories``
 --------------------
