@@ -1,4 +1,4 @@
-apt-get upgrade:
+apt-get -y upgrade:
   cmd.wait:
     - watch:
       - file: /etc/apt/sources.list
