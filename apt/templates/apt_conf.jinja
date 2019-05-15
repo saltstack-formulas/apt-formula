@@ -11,7 +11,7 @@
 {%- endmacro -%}
 // This file is managed by salt
 {%- for opt, opt_data in data|dictsort -%}
-  {%- if opt_data is string %}
+  {%- if opt_data is string or opt_data is number %}
 {{ opt }} "{{ opt_data }}";
   {%- elif opt_data is mapping %}
 {{ opt }}
