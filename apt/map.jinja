@@ -1,5 +1,4 @@
 {% set distribution = salt['grains.get']('lsb_distrib_codename') %}
-{% set distribution_updates = salt['grains.get']('lsb_distrib_codename') ~ '/updates' %}
 {% set arch = salt['grains.get']('osarch').split(' ') %}
 {% set apt = salt['grains.filter_by']({
     'Debian': {
@@ -21,18 +20,68 @@
         'default_url': 'http://deb.debian.org/debian/',
         'default_keyring_package': 'debian-archive-keyring',
         'repositories': {
-          'sane_default': {
+          'default': {
              'distro': distribution,
              'url': 'http://deb.debian.org/debian/',
              'arch': arch,
              'comps': ['main'],
           },
-          'security-stable': {
-             'distro': distribution_updates,
+          'default-security': {
+             'distro': distribution ~ '/updates',
              'url': 'http://security.debian.org/',
+             'arch': arch,
+             'comps': ['main'],
+          },
+          'default-updates': {
+             'distro': distribution ~ '-updates',
+             'url': 'http://deb.debian.org/debian/',
              'arch': arch,
              'comps': ['main'],
           },
         },
     },
-}, merge=salt['pillar.get']('apt:lookup'), default='Debian') %}
+
+    'Ubuntu': {
+        'pkgs': ['unattended-upgrades'],
+        'confd_dir': '/etc/apt/apt.conf.d',
+        'unattended_config': '50unattended-upgrades',
+        'periodic_config': '10periodic',
+        'sources_list_dir': '/etc/apt/sources.list.d',
+        'remove_sources_list': false,
+        'clean_sources_list_d': false,
+        'preferences_dir': '/etc/apt/preferences.d',
+        'preferences': {},
+        'remove_preferences': false,
+        'clean_preferences_d': false,
+        'remove_apt_conf': false,
+        'clean_apt_conf_d': false,
+        'apt_conf_d': {},
+        'default_keyserver': 'keyserver.ubuntu.com',
+        'default_url': 'http://archive.ubuntu.com/ubuntu/',
+        'default_keyring_package': 'ubuntu-keyring',
+        'repositories': {
+          'default': {
+             'distro': distribution,
+             'url': 'http://archive.ubuntu.com/ubuntu/',
+             'arch': arch,
+             'comps': ['main'],
+          },
+          'default-security': {
+             'distro': distribution ~ '-security',
+             'url': 'http://security.ubuntu.com/ubuntu/',
+             'arch': arch,
+             'comps': ['main'],
+          },
+
+          'default-updates': {
+             'distro': distribution ~ '-updates',
+             'url': 'http://archive.ubuntu.com/ubuntu/',
+             'arch': arch,
+             'comps': ['main'],
+          },
+
+        },
+    },
+
+}, grain='os', merge=salt['pillar.get']('apt:lookup'), default='Debian') %}
+
