@@ -1,5 +1,5 @@
 name: apt
-os: Debian, Ubuntu, Raspbian 
+os: Debian, Ubuntu, Raspbian
 os_family: Debian
 version: 0.2.0
 release: 1
