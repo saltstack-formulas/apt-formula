@@ -1,0 +1,8 @@
+name: repositories
+title: Apt Formula
+maintainer: Saltstack-formulas org
+license: Apache-2.0
+summary: Verify that the apt repositories are configured correctly
+supports:
+  - os-name: debian
+  - os-name: ubuntu
