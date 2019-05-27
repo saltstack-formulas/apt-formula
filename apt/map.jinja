@@ -35,4 +35,12 @@
           },
         },
     },
-}, merge=salt['pillar.get']('apt:lookup'), default='Debian') %}
+}, merge=salt['grains.filter_by']({
+}, grain='oscodename', merge=salt['grains.filter_by']({
+    'Ubuntu': {
+         'keyring_package': 'ubuntu-keyring'
+    },
+    'Mint': {
+         'keyring_package': 'linuxmint-keyring'
+    },
+}, merge=salt['pillar.get']('apt:lookup'), default='Debian'))) %}
