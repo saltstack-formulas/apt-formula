@@ -20,13 +20,13 @@
         'default_url': 'http://deb.debian.org/debian/',
         'default_keyring_package': 'debian-archive-keyring',
         'repositories': {
-          'default': {
+          'sane_default': {
              'distro': distribution,
              'url': 'http://deb.debian.org/debian/',
              'arch': arch,
              'comps': ['main'],
           },
-          'default-security': {
+          'security-stable': {
              'distro': distribution ~ '/updates',
              'url': 'http://security.debian.org/',
              'arch': arch,
