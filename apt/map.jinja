@@ -20,27 +20,26 @@
         'default_url': 'http://deb.debian.org/debian/',
         'default_keyring_package': 'debian-archive-keyring',
         'repositories': {
-          'sane_default': {
-             'distro': distribution,
-             'url': 'http://deb.debian.org/debian/',
-             'arch': arch,
-             'comps': ['main'],
-          },
-          'security-stable': {
-             'distro': distribution ~ '/updates',
-             'url': 'http://security.debian.org/',
-             'arch': arch,
-             'comps': ['main'],
-          },
-          'default-updates': {
-             'distro': distribution ~ '-updates',
-             'url': 'http://deb.debian.org/debian/',
-             'arch': arch,
-             'comps': ['main'],
-          },
+            'sane_default': {
+                'distro': distribution,
+                'url': 'http://deb.debian.org/debian/',
+                'arch': arch,
+                'comps': ['main'],
+            },
+            'security-stable': {
+                'distro': distribution ~ '/updates',
+                'url': 'http://security.debian.org/',
+                'arch': arch,
+                'comps': ['main'],
+            },
+            'default-updates': {
+                'distro': distribution ~ '-updates',
+                'url': 'http://deb.debian.org/debian/',
+                'arch': arch,
+                'comps': ['main'],
+            },
         },
     },
-
     'Ubuntu': {
         'pkgs': ['unattended-upgrades'],
         'confd_dir': '/etc/apt/apt.conf.d',
@@ -60,28 +59,28 @@
         'default_url': 'http://archive.ubuntu.com/ubuntu/',
         'default_keyring_package': 'ubuntu-keyring',
         'repositories': {
-          'default': {
-             'distro': distribution,
-             'url': 'http://archive.ubuntu.com/ubuntu/',
-             'arch': arch,
-             'comps': ['main'],
-          },
-          'default-security': {
-             'distro': distribution ~ '-security',
-             'url': 'http://security.ubuntu.com/ubuntu/',
-             'arch': arch,
-             'comps': ['main'],
-          },
-
-          'default-updates': {
-             'distro': distribution ~ '-updates',
-             'url': 'http://archive.ubuntu.com/ubuntu/',
-             'arch': arch,
-             'comps': ['main'],
-          },
-
+            'default': {
+                'distro': distribution,
+                'url': 'http://archive.ubuntu.com/ubuntu/',
+                'arch': arch,
+                'comps': ['main'],
+            },
+            'default-security': {
+                'distro': distribution ~ '-security',
+                'url': 'http://security.ubuntu.com/ubuntu/',
+                'arch': arch,
+                'comps': ['main'],
+            },
+            'default-updates': {
+                'distro': distribution ~ '-updates',
+                'url': 'http://archive.ubuntu.com/ubuntu/',
+                'arch': arch,
+                'comps': ['main'],
+            },
         },
     },
-
-}, grain='os', merge=salt['pillar.get']('apt:lookup'), default='Debian') %}
-
+}, grain='os', merge=salt['grains.filter_by']({
+    'Mint': {
+        'keyring_package': 'linuxmint-keyring'
+    },
+}, grain='oscodename', merge=salt['pillar.get']('apt:lookup'), default='Debian')) %}
