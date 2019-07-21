@@ -25,7 +25,7 @@ platforms:
         - curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
         - sh bootstrap-salt.sh -XdPbfrq -x python3 git develop
 
-  ## SALT 2019.2
+  ## SALT `2019.2`
   - name: debian-9-2019-2-py3
     driver:
       image: netmanagers/salt-2019.2-py3:debian-9
@@ -42,11 +42,6 @@ provisioner:
   salt_copy_filter:
     - .kitchen
     - .git
-  pillars:
-    top.sls:
-      base:
-        '*':
-          - apt
 
 verifier:
   # https://www.inspec.io/
@@ -64,6 +59,11 @@ suites:
           '*':
             - apt.repositories
             - apt.update
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - apt
       pillars_from_files:
         apt.sls: test/salt/pillar/repositories.pillar.sls
     verifier:
@@ -75,6 +75,11 @@ suites:
         base:
           '*':
             - apt.preferences
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - apt
       pillars_from_files:
         apt.sls: test/salt/pillar/preferences.pillar.sls
     verifier:

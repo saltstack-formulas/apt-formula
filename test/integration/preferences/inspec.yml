@@ -1,8 +1,8 @@
 name: preferences
-title: Apt Formula
-maintainer: Saltstack-formulas org
+title: apt formula
+maintainer: SaltStack Formulas
 license: Apache-2.0
 summary: Verify that the apt preferences are configured correctly
 supports:
-  - os-name: debian
-  - os-name: ubuntu
+  - platform-name: debian
+  - platform-name: ubuntu
