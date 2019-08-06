@@ -4,7 +4,7 @@
 apt:
   # Set the right keyring for the distro (ie ubuntu-keyring or ...)
   keyring_package: debian-archive-keyring
-  
+
   remove_sources_list: true
   clean_sources_list_d: true
 

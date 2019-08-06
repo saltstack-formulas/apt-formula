@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 apt:
   remove_sources_list: true
   clean_sources_list_d: true
@@ -16,4 +19,3 @@ apt:
       arch: [amd64]
       comps: []
       key_url: https://cli-assets.heroku.com/apt/release.key
-
