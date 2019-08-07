@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 apt:
   remove_preferences: true
   clean_preferences_d: true
