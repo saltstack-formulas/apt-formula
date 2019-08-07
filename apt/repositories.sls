@@ -69,6 +69,8 @@
        the latter will be used. #}
     {% if args.key_url is defined %}
     - key_url: {{ args.key_url }}
+    {% elif args.key_text is defined %}
+    - key_text: {{ args.key_text }}
     {% elif args.keyid is defined %}
     - keyid: {{ args.keyid }}
     - keyserver: {{ r_keyserver }}

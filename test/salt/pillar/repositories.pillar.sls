@@ -8,7 +8,7 @@ apt:
       url: http://repository.spotify.com
       arch: [amd64]
       comps: [non-free]
-      keyid: 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+      keyid: 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
       keyserver: keyserver.ubuntu.com
     heroku:
       distro: ./
