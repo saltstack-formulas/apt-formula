@@ -1,2 +1,3 @@
 apt-transport-https:
-  pkg.installed
+  pkg.installed:
+    - name: apt-transport-https

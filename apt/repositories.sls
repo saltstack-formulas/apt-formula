@@ -8,7 +8,8 @@
 {% set keyring_package = apt.get('keyring_package', apt_map.default_keyring_package) %}
 
 {{ keyring_package }}:
-  pkg.installed
+  pkg.installed:
+    - name: {{ keyring_package }}
 
 /etc/apt/sources.list:
   file.managed:
