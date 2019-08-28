@@ -12,9 +12,9 @@ driver:
 # the `env.matrix` instances defined in `.travis.yml`
 platforms:
   ## SALT `develop`
-  - name: debian-9-develop-py3
+  - name: debian-10-develop-py3
     driver:
-      image: netmanagers/salt-develop-py3:debian-9
+      image: netmanagers/salt-develop-py3:debian-10
       provision_command:
         - curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
         - sh bootstrap-salt.sh -XdPbfrq -x python3 git develop
