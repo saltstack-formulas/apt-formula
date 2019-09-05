@@ -19,8 +19,8 @@ services:
 # the `platforms` defined in `kitchen.yml`
 env:
   matrix:
-    - INSTANCE: repositories-debian-9-develop-py3
-    - INSTANCE: preferences-debian-9-develop-py3
+    - INSTANCE: repositories-debian-10-develop-py3
+    # - INSTANCE: preferences-debian-10-develop-py3
     # - INSTANCE: repositories-ubuntu-1804-develop-py3
     # - INSTANCE: preferences-ubuntu-1804-develop-py3
     - INSTANCE: repositories-debian-9-2019-2-py3
