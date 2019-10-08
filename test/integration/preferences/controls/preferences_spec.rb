@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'Apt preferences' do
   title 'should be configured'
 

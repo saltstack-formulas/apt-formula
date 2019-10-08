@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 control 'Apt repositories' do
   title 'should be configured'
 
-  if os[:name] == 'ubuntu'
-       keyring_package = 'ubuntu-keyring'
-  else
-       keyring_package = 'debian-archive-keyring'
-  end
+  keyring_package = if os[:name] == 'ubuntu'
+                      'ubuntu-keyring'
+                    else
+                      'debian-archive-keyring'
+                    end
 
   describe package(keyring_package) do
     it { should be_installed }
