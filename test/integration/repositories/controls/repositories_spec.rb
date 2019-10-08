@@ -30,7 +30,11 @@ control 'Apt repositories' do
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'root' }
     its('mode') { should cmp '0644' }
-    its(:content) { should match(%r{deb \[arch=amd64\] http://repository.spotify.com stable non-free}) }
+    its(:content) do
+      should match(
+        %r{deb \[arch=amd64\] http://repository.spotify.com stable non-free}
+      )
+    end
   end
 
   describe file('/etc/apt/sources.list.d/heroku-binary.list') do
@@ -38,6 +42,10 @@ control 'Apt repositories' do
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'root' }
     its('mode') { should cmp '0644' }
-    its(:content) { should match(%r{deb \[arch=amd64\] https://cli-assets.heroku.com/apt ./}) }
+    its(:content) do
+      should match(
+        %r{deb \[arch=amd64\] https://cli-assets.heroku.com/apt ./}
+      )
+    end
   end
 end
