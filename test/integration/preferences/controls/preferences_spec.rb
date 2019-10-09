@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 control 'Apt preferences' do
   title 'should be configured'
 
@@ -18,7 +20,11 @@ control 'Apt preferences' do
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'root' }
     its('mode') { should cmp '0644' }
-    its(:content) { should match("Package: rspamd\nPin: origin rspamd.com\nPin-Priority: 650\n") }
+    its(:content) do
+      should match(
+        "Package: rspamd\nPin: origin rspamd.com\nPin-Priority: 650\n"
+      )
+    end
   end
 
   describe file('/etc/apt/preferences.d/01-all') do
@@ -26,7 +32,11 @@ control 'Apt preferences' do
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'root' }
     its('mode') { should cmp '0644' }
-    its(:content) { should match("Package: *\nPin: release stable\nPin-Priority: 610\n") }
+    its(:content) do
+      should match(
+        "Package: *\nPin: release stable\nPin-Priority: 610\n"
+      )
+    end
   end
 
   describe file('/etc/apt/preferences.d/02-all') do
@@ -34,7 +44,11 @@ control 'Apt preferences' do
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'root' }
     its('mode') { should cmp '0644' }
-    its(:content) { should match("Package: *\nPin: release testing\nPin-Priority: 600\n") }
+    its(:content) do
+      should match(
+        "Package: *\nPin: release testing\nPin-Priority: 600\n"
+      )
+    end
   end
 
   describe file('/etc/apt/preferences.d/03-all') do
@@ -42,6 +56,10 @@ control 'Apt preferences' do
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'root' }
     its('mode') { should cmp '0644' }
-    its(:content) { should match("Package: *\nPin: release unstable\nPin-Priority: 50\n") }
+    its(:content) do
+      should match(
+        "Package: *\nPin: release unstable\nPin-Priority: 50\n"
+      )
+    end
   end
 end
