@@ -1,2 +1,3 @@
 apt-transport-debtorrent:
-  pkg.installed
+  pkg.installed:
+    - name: apt-transport-debtorrent
