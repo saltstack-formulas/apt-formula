@@ -20,7 +20,10 @@ apt:
     minimal_steps: false
     install_on_shutdown: false
     mail: root
-    mail_only_on_error: false
+    sender: root
+    # Prefer using `mail_report: 'only-on-error'` over old syntax `mail_only_on_error: false`
+    # allowed values: 'always', 'only-on-error', 'on-change'
+    mail_report: 'only-on-error'
     remove_unused_dependencies: true
     automatic_reboot: false
     dl_limit: 0
@@ -30,6 +33,12 @@ apt:
     unattended_upgrade: 1
     auto_clean_interval: 7
     verbose: 2
+    syslog_enable: true
+    syslog_facility: 'auth'
+    dpkg_options: '--force-confold'
+    update_days: ['Mon', 'Fri']
+    package_whitelist_strict: false
+    keep_debs_after_install: false
 
   listchanges:
     profiles:
@@ -48,28 +57,25 @@ apt:
       distro: stable/updates
       url: http://security.debian.org
       comps: [main, contrib, non-free]
-      arch: [amd64, i386]
+      arch: [amd64]
       type: [binary, source]
+      key_url: https://ftp-master.debian.org/keys/archive-key-10-security.asc
     updates:
       distro: stable-updates
       url: http://httpredir.debian.org/debian/
       comps: [main, contrib, non-free]
+      key_url: https://ftp-master.debian.org/keys/archive-key-10.asc
     raspbian:
-      distro: wheezy
+      distro: stable
       url: http://archive.raspbian.org/raspbian
       type: [source]
       key_url: https://archive.raspbian.org/raspbian.public.key
-    debian-jessie:
-      distro: jessie
+    debian-buster:
+      distro: buster
       url: http://httpredir.debian.org/debian
       type: [source]
       comps: [main, contrib, non-free]
-    dropbox:
-      distro: jessie
-      url: http://linux.dropbox.com/debian
-      arch: [i386, amd64]
-      keyid: 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
-      keyserver: hkp://pgp.mit.edu:80
+      key_url: https://ftp-master.debian.org/keys/archive-key-10.asc
 
   preferences:
     00-rspamd:
