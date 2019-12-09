@@ -26,7 +26,7 @@ debian-archive-keyring:
     - group: root
     - clean: {{ clean_sources_list_d }}
 
-{% for repo, args in repositories.iteritems() %}
+{% for repo, args in repositories.items() %}
 {%- set r_arch = '[arch=' ~ args.arch|join(',') ~ ']' if args.arch is defined else '' %}
 {%- set r_url = args.url or default_url %}
 {%- set r_distro = args.distro or 'stable' %}
