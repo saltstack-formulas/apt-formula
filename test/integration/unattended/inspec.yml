@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
+name: unattended
+title: apt formula
+maintainer: SaltStack Formulas
+license: Apache-2.0
+summary: Verify that the apt unattended preferences are configured correctly
+supports:
+  - platform-name: debian
+  - platform-name: ubuntu

@@ -85,3 +85,19 @@ suites:
     verifier:
       inspec_tests:
         - path: test/integration/preferences
+  - name: unattended
+    provisioner:
+      state_top:
+        base:
+          '*':
+            - apt.unattended
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - apt
+      pillars_from_files:
+        apt.sls: test/salt/pillar/unattended.pillar.sls
+    verifier:
+      inspec_tests:
+        - path: test/integration/unattended

@@ -1,3 +1,8 @@
+########################################################################
+# File managed by Salt at <{{ source }}>.
+# Your changes will be overwritten.
+########################################################################
+
 {% set apt = pillar.get('apt', {}) -%}
 {% set unattended = apt.get('unattended', {}) -%}
 {% set allowed_origins = unattended.get('allowed_origins', ['${distro_id}:${distro_codename}-security']) -%}
@@ -6,12 +11,28 @@
 {% set auto_fix_interrupted_dpkg = unattended.get('auto_fix_interrupted_dpkg', 'true') -%}
 {% set minimal_steps = unattended.get('minimal_steps', 'false') -%}
 {% set install_on_shutdown = unattended.get('install_on_shutdown', 'false') -%}
-{% set mail = unattended.get('mail', 'root') -%}
+{% set mail = unattended.get('mail', '') -%}
+{% set sender = unattended.get('sender', 'root') -%}
 {% set mail_only_on_error = unattended.get('mail_only_on_error', 'false') -%}
-{% set remove_unused_dependencies = unattended.get('remove_unused_dependencies', 'true') -%}
+{% set mail_report = unattended.get('mail_report', 'on-change') -%}
+{% if mail_only_on_error -%}
+{%   set mail_report = 'only-on-error' -%}
+{% endif -%}
+{% if mail_report not in ['always', 'only-on-error', 'on-change'] -%}
+{{ raise('apt-formula: mail_report should be one of "always", "only-on-error" or "on-change".') }}
+{% endif -%}
+{% set remove_unused_dependencies = unattended.get('remove_unused_dependencies', 'false') -%}
+{% set remove_new_unused_dependencies = unattended.get('remove_new_unused_dependencies', 'true') -%}
 {% set automatic_reboot = unattended.get('automatic_reboot', 'false') -%}
 {% set automatic_reboot_time = unattended.get('automatic_reboot_time', 'now') -%}
 {% set dl_limit = unattended.get('dl_limit', '0') -%}
+{% set syslog_enable = unattended.get('syslog_enable', 'false') -%}
+{% set syslog_facility = unattended.get('syslog_facility', 'daemon') -%}
+{% set package_whitelist_strict = unattended.get('package_whitelist_strict', 'false') -%}
+{% set keep_debs_after_install = unattended.get('keep_debs_after_install', 'false') -%}
+{% set dpkg_options = unattended.get('dpkg_options', '') -%}
+{% set update_days = unattended.get('update_days', '') -%}
+
 Unattended-Upgrade::Allowed-Origins {
         {%- for pattern in allowed_origins %}
         "{{ pattern }}";
@@ -31,8 +52,20 @@ Unattended-Upgrade::AutoFixInterruptedDpkg "{{ auto_fix_interrupted_dpkg }}";
 Unattended-Upgrade::MinimalSteps "{{ minimal_steps }}";
 Unattended-Upgrade::InstallOnShutdown "{{ install_on_shutdown }}";
 Unattended-Upgrade::Mail "{{ mail }}";
-Unattended-Upgrade::MailOnlyOnError "{{ mail_only_on_error }}";
+Unattended-Upgrade::Sender "{{ sender }}";
+Unattended-Upgrade::MailReport "{{ mail_report }}";
 Unattended-Upgrade::Remove-Unused-Dependencies "{{ remove_unused_dependencies }}";
+Unattended-Upgrade::Remove-New-Unused-Dependencies "{{ remove_new_unused_dependencies }}";
 Unattended-Upgrade::Automatic-Reboot "{{ automatic_reboot }}";
 Unattended-Upgrade::Automatic-Reboot-Time "{{ automatic_reboot_time }}";
+Unattended-Upgrade::SyslogEnable "{{ syslog_enable }}";
+Unattended-Upgrade::SyslogFacility "{{ syslog_facility }}";
+Unattended-Upgrade::Keep-Debs-After-Install "{{ keep_debs_after_install }}";
+Unattended-Upgrade::Package-Whitelist-Strict "{{ package_whitelist_strict }}";
+{% if update_days and update_days | is_list -%}
+Unattended-Upgrade::Update-Days {"{{ update_days | join('";"') }}"};
+{% endif -%}
 Acquire::http::Dl-Limit "{{ dl_limit }}";
+{% if dpkg_options -%}
+Dpkg::Options {"{{ dpkg_options }}"};
+{% endif -%}
