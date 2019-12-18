@@ -1,5 +1,42 @@
 # Changelog
 
+# [0.10.0](https://github.com/saltstack-formulas/apt-formula/compare/v0.9.1...v0.10.0) (2019-12-18)
+
+
+### Bug Fixes
+
+* **fluorine:** add name so no virtual_packages ([57bfc61](https://github.com/saltstack-formulas/apt-formula/commit/57bfc61b2c8b79e09d51da58d11d3eaf34a50085))
+* **release.config.js:** use full commit hash in commit link [skip ci] ([ca4ba6e](https://github.com/saltstack-formulas/apt-formula/commit/ca4ba6e370a0885689931d6919b89cf5d77517ce))
+* **travis:** quote pathspecs used with `git ls-files` [skip ci] ([4303495](https://github.com/saltstack-formulas/apt-formula/commit/4303495139f4577d7d0bedd934811aaa2b8aa2f6))
+
+
+### Continuous Integration
+
+* **gemfile:** restrict `train` gem version until upstream fix [skip ci] ([5178f0d](https://github.com/saltstack-formulas/apt-formula/commit/5178f0d13facfa4aa27b73f2f76648dbeb486207))
+* **kitchen:** use `debian-10-master-py3` instead of `develop` [skip ci] ([0506a5c](https://github.com/saltstack-formulas/apt-formula/commit/0506a5c5db540d669cd0a61c16016f5cf3040037))
+* **kitchen+travis:** upgrade matrix after `2019.2.2` release [skip ci] ([6187515](https://github.com/saltstack-formulas/apt-formula/commit/6187515e4395349448c6d0b4519c9037197a1a88))
+* **travis:** apply changes from build config validation [skip ci] ([5bd314b](https://github.com/saltstack-formulas/apt-formula/commit/5bd314b90d8f90ddc2d702fdf256f90eeca1e358))
+* **travis:** opt-in to `dpl v2` to complete build config validation [skip ci] ([0e4d905](https://github.com/saltstack-formulas/apt-formula/commit/0e4d9056b124a155ceacbcf92449b50c909fff2f))
+* **travis:** run `shellcheck` during lint job [skip ci] ([8230b8b](https://github.com/saltstack-formulas/apt-formula/commit/8230b8b2f26703011f1e3654da19f7c6dafbb6cc))
+* **travis:** update `salt-lint` config for `v0.0.10` [skip ci] ([fdb7822](https://github.com/saltstack-formulas/apt-formula/commit/fdb7822dc834da315222bdd092f486a30f0936d0))
+* **travis:** use build config validation (beta) [skip ci] ([cf6a735](https://github.com/saltstack-formulas/apt-formula/commit/cf6a735ebb500657bb534badb2287a55f2e1c683))
+
+
+### Documentation
+
+* **contributing:** remove to use org-level file instead [skip ci] ([b2662ce](https://github.com/saltstack-formulas/apt-formula/commit/b2662ce3723cccd045ec96342e5ba3e364813398))
+* **readme:** update link to `CONTRIBUTING` [skip ci] ([d2630f7](https://github.com/saltstack-formulas/apt-formula/commit/d2630f7cf15a30528e7d06e0efcb4d237bb35ea2))
+
+
+### Features
+
+* **unattended:** add newer options from upstream ([49ee29c](https://github.com/saltstack-formulas/apt-formula/commit/49ee29ce9ee371992225f5393f0f89811afdaeab))
+
+
+### Performance Improvements
+
+* **travis:** improve `salt-lint` invocation [skip ci] ([9d5102c](https://github.com/saltstack-formulas/apt-formula/commit/9d5102cb96be9ee2faa371940b6321663e97ce5f))
+
 ## [0.9.1](https://github.com/saltstack-formulas/apt-formula/compare/v0.9.0...v0.9.1) (2019-10-09)
 
 
