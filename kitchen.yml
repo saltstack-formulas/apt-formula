@@ -15,15 +15,9 @@ platforms:
   - name: debian-10-master-py3
     driver:
       image: netmanagers/salt-master-py3:debian-10
-      provision_command:
-        - curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
-        - sh bootstrap-salt.sh -XdPbfrq -x python3 git master
   - name: ubuntu-1804-master-py3
     driver:
       image: netmanagers/salt-master-py3:ubuntu-18.04
-      provision_command:
-        - curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
-        - sh bootstrap-salt.sh -XdPbfrq -x python3 git master
 
   ## SALT `2019.2`
   - name: debian-9-2019-2-py3
