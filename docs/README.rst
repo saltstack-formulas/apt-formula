@@ -17,6 +17,7 @@ apt
 A formula to configure and manage update, upgrade, and dist-upgrade within apt.
 
 .. contents:: **Table of Contents**
+   :depth: 1
 
 General notes
 -------------
