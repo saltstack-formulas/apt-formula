@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.10.1](https://github.com/saltstack-formulas/apt-formula/compare/v0.10.0...v0.10.1) (2020-05-29)
+
+
+### Continuous Integration
+
+* **gemfile.lock:** add to repo with updated `Gemfile` [skip ci] ([e657de0](https://github.com/saltstack-formulas/apt-formula/commit/e657de0fbc41e9078ce5c4b881096736a3b45e91))
+* **kitchen:** avoid using bootstrap for `master` instances [skip ci] ([7aebed6](https://github.com/saltstack-formulas/apt-formula/commit/7aebed62a71520ccee6a2fb96601899787674a09))
+* **travis:** add notifications => zulip [skip ci] ([e22b8f0](https://github.com/saltstack-formulas/apt-formula/commit/e22b8f062ee2f9d7078a5f22bf9c787c6f11dc22))
+* **travis:** use `major.minor` for `semantic-release` version [skip ci] ([52df5ca](https://github.com/saltstack-formulas/apt-formula/commit/52df5ca1f0a0c70f587d59a99bb351e70bc73750))
+* **workflows/commitlint:** add to repo [skip ci] ([63959a0](https://github.com/saltstack-formulas/apt-formula/commit/63959a055314cec3f6e688c64512ede6daa3f9fa))
+
+
+### Documentation
+
+* **readme:** show only one level in table of contents ([081c77a](https://github.com/saltstack-formulas/apt-formula/commit/081c77ad01a4eb8458426a66f2195cb08b892e31))
+* **readme.rst:** add doc for apt_conf state + other minor update ([cf78277](https://github.com/saltstack-formulas/apt-formula/commit/cf78277ce51f4280a52583687a886c1965e90a40))
+
 # [0.10.0](https://github.com/saltstack-formulas/apt-formula/compare/v0.9.1...v0.10.0) (2019-12-18)
 
 
