@@ -71,14 +71,22 @@ values from ``map.jinja`` are used.
 Check https://wiki.debian.org/SourcesList for an explanation about the resulting
 files structure.
 
+``apt.apt_conf``
+^^^^^^^^^^^^^^^^^^^
+
+Allows you to manage apt configuration from pillar. Check ``pillar.example`` to see
+possible values.
+
+Check https://wiki.debian.org/AptConfiguration#apt.conf and ``man 5 apt.conf`` for
+an explanation about the resulting files structure.
+
 ``apt.preferences``
 ^^^^^^^^^^^^^^^^^^^
 
 Allows you to configure and manage apt's preferences from pillar. Check
-``pillar.example`` to see possible values. If used and no repositories are
-provided, sane default values from ``map.jinja`` are used.
+``pillar.example`` to see possible values.
 
-Check https://wiki.debian.org/AptPreferences?action=show&redirect=preferences
+Check https://wiki.debian.org/AptConfiguration#apt_preferences_.28APT_pinning.29
 and ``man 5 apt_preferences`` for an explanation about the resulting files structure.
 
 ``apt.ppa``
@@ -143,4 +151,3 @@ Runs all of the stages above in one go: i.e. ``destroy`` + ``converge`` + ``veri
 ^^^^^^^^^^^^^^^^^^^^^
 
 Gives you SSH access to the instance for manual testing.
-
