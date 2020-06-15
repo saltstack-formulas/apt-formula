@@ -14,18 +14,18 @@ platforms:
   ## SALT `master`
   - name: debian-10-master-py3
     driver:
-      image: netmanagers/salt-master-py3:debian-10
+      image: saltimages/salt-master-py3:debian-10
   - name: ubuntu-1804-master-py3
     driver:
-      image: netmanagers/salt-master-py3:ubuntu-18.04
+      image: saltimages/salt-master-py3:ubuntu-18.04
 
   ## SALT `2019.2`
   - name: debian-9-2019-2-py3
     driver:
-      image: netmanagers/salt-2019.2-py3:debian-9
+      image: saltimages/salt-2019.2-py3:debian-9
   - name: ubuntu-1804-2019-2-py3
     driver:
-      image: netmanagers/salt-2019.2-py3:ubuntu-18.04
+      image: saltimages/salt-2019.2-py3:ubuntu-18.04
 
 provisioner:
   name: salt_solo
