@@ -42,4 +42,6 @@
       - "{{ 'Explanation: ' ~ explanation }}"
 {% endfor %}
 {% endif %}
+    - require_in:
+      - file: {{ preferences_dir }}
 {% endfor %}

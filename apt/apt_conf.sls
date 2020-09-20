@@ -33,4 +33,6 @@
     - mode: 644
     - context:
         data: {{ contents }}
+    - require_in:
+      - file: {{ confd_dir }}
 {% endfor %}
