@@ -30,8 +30,6 @@
     - group: root
     - clean: {{ clean_sources_list_d }}
 
-
-
 {% for repo, args in repositories.items() %}
 
 {% set r_opts = '' %}
