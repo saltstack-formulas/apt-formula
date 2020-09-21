@@ -2,6 +2,21 @@
 Changelog
 =========
 
+`0.10.2 <https://github.com/saltstack-formulas/apt-formula/compare/v0.10.1...v0.10.2>`_ (2020-09-21)
+--------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **preferences,repositories:** fix clean parameter (\ `50e02fb <https://github.com/saltstack-formulas/apt-formula/commit/50e02fba148d1e040832cefb2d716191046fafb0>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **kitchen:** use ``saltimages`` Docker Hub where available [skip ci] (\ `5fbc45d <https://github.com/saltstack-formulas/apt-formula/commit/5fbc45d052ef2d8fd4682e6a07fd4d4189043324>`_\ )
+
 `0.10.1 <https://github.com/saltstack-formulas/apt-formula/compare/v0.10.0...v0.10.1>`_ (2020-05-29)
 --------------------------------------------------------------------------------------------------------
 
