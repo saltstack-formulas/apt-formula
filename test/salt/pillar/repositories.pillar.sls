@@ -6,12 +6,12 @@ apt:
   clean_sources_list_d: true
 
   repositories:
-    spotify:
+    multimedia-stable:
       distro: stable
-      url: http://repository.spotify.com
+      url: http://www.deb-multimedia.org
       arch: [amd64]
-      comps: [non-free]
-      keyid: 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
+      comps: [main]
+      keyid: 5C808C2B65558117
       keyserver: keyserver.ubuntu.com
     heroku:
       distro: ./
