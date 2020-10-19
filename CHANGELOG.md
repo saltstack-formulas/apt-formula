@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.10.3](https://github.com/saltstack-formulas/apt-formula/compare/v0.10.2...v0.10.3) (2020-10-19)
+
+
+### Continuous Integration
+
+* **pre-commit:** add to formula [skip ci] ([a472351](https://github.com/saltstack-formulas/apt-formula/commit/a472351b988d980a6a8dcf0c3d138ce547f2db65))
+* **pre-commit:** add to formula [skip ci] ([fe75b59](https://github.com/saltstack-formulas/apt-formula/commit/fe75b5923112b88f16497a6e8c7890830874410e))
+* **pre-commit:** add to formula [skip ci] ([d9f480a](https://github.com/saltstack-formulas/apt-formula/commit/d9f480a4a435ffe895d435b9870d95a7f0d06b97))
+* **pre-commit:** enable/disable `rstcheck` as relevant [skip ci] ([4cf4741](https://github.com/saltstack-formulas/apt-formula/commit/4cf4741228a1210c52f994bec071bfaf6e45609d))
+* **pre-commit:** finalise `rstcheck` configuration [skip ci] ([2d520d2](https://github.com/saltstack-formulas/apt-formula/commit/2d520d2f533de5072b45cb47fbc949b92a2eae97))
+
+
+### Tests
+
+* **repositories:** change to a repo with no key expiration ([e677b78](https://github.com/saltstack-formulas/apt-formula/commit/e677b7891e99bd731981526453a041645f002a78))
+
 ## [0.10.2](https://github.com/saltstack-formulas/apt-formula/compare/v0.10.1...v0.10.2) (2020-09-21)
 
 

@@ -1,7 +1,7 @@
 name: apt
 os: Debian, Ubuntu, Raspbian
 os_family: Debian
-version: 0.10.2
+version: 0.10.3
 release: 1
 minimum_version: 2017.7
 summary: Apt formula
