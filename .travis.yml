@@ -83,22 +83,47 @@ jobs:
     ## Define the rest of the matrix based on Kitchen testing
     # Make sure the instances listed below match up with
     # the `platforms` defined in `kitchen.yml`
-    - env: INSTANCE=repositories-debian-10-master-py3
+    # - env: INSTANCE=repositories-debian-10-tiamat-py3
+    # - env: INSTANCE=repositories-debian-9-tiamat-py3
+    # - env: INSTANCE=repositories-ubuntu-2004-tiamat-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-tiamat-py3
+    # - env: INSTANCE=repositories-ubuntu-1604-tiamat-py3
+    # - env: INSTANCE=repositories-debian-10-master-py3
     # - env: INSTANCE=preferences-debian-10-master-py3
     # - env: INSTANCE=unattended-debian-10-master-py3
-    # - env: INSTANCE=debian-10-master-py3
-    - env: INSTANCE=repositories-ubuntu-1804-master-py3
+    - env: INSTANCE=debian-10-master-py3
+    # - env: INSTANCE=repositories-debian-9-master-py3
+    # - env: INSTANCE=preferences-debian-9-master-py3
+    # - env: INSTANCE=unattended-debian-9-master-py3
+    - env: INSTANCE=debian-9-master-py3
+    # - env: INSTANCE=repositories-ubuntu-2004-master-py3
+    # - env: INSTANCE=preferences-ubuntu-2004-master-py3
+    # - env: INSTANCE=unattended-ubuntu-2004-master-py3
+    - env: INSTANCE=ubuntu-2004-master-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-master-py3
     # - env: INSTANCE=preferences-ubuntu-1804-master-py3
     # - env: INSTANCE=unattended-ubuntu-1804-master-py3
-    # - env: INSTANCE=ubuntu-1804-master-py3
-    # - env: INSTANCE=repositories-debian-9-2019-2-py3
-    - env: INSTANCE=preferences-debian-9-2019-2-py3
-    # - env: INSTANCE=unattended-debian-9-2019-2-py3
-    # - env: INSTANCE=debian-9-2019-2-py3
-    # - env: INSTANCE=repositories-ubuntu-1804-2019-2-py3
-    # - env: INSTANCE=preferences-ubuntu-1804-2019-2-py3
-    - env: INSTANCE=unattended-ubuntu-1804-2019-2-py3
-    # - env: INSTANCE=ubuntu-1804-2019-2-py3
+    - env: INSTANCE=ubuntu-1804-master-py3
+    # - env: INSTANCE=repositories-ubuntu-1604-master-py3
+    # - env: INSTANCE=preferences-ubuntu-1604-master-py3
+    # - env: INSTANCE=unattended-ubuntu-1604-master-py3
+    - env: INSTANCE=ubuntu-1604-master-py3
+    # - env: INSTANCE=repositories-debian-10-3002-2-py3
+    # - env: INSTANCE=repositories-debian-9-3002-2-py3
+    # - env: INSTANCE=repositories-ubuntu-2004-3002-2-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-3002-2-py3
+    # - env: INSTANCE=repositories-ubuntu-1604-3002-2-py3
+    # - env: INSTANCE=repositories-debian-10-3001-4-py3
+    # - env: INSTANCE=repositories-debian-9-3001-4-py3
+    # - env: INSTANCE=repositories-ubuntu-2004-3001-4-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-3001-4-py3
+    # - env: INSTANCE=repositories-ubuntu-1604-3001-4-py3
+    # - env: INSTANCE=repositories-debian-10-3000-6-py3
+    # - env: INSTANCE=repositories-debian-9-3000-6-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-3000-6-py3
+    # - env: INSTANCE=repositories-ubuntu-1604-3000-6-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-3000-6-py2
+    # - env: INSTANCE=repositories-ubuntu-1604-3000-6-py2
 
     ## Define the release stage that runs `semantic-release`
     - stage: 'release'
