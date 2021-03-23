@@ -121,6 +121,7 @@ suites:
       state_top:
         base:
           '*':
+            - apt._mapdata
             - apt.repositories
             - apt.update
       pillars:
@@ -138,6 +139,7 @@ suites:
       state_top:
         base:
           '*':
+            - apt._mapdata
             - apt.preferences
       pillars:
         top.sls:
@@ -154,6 +156,7 @@ suites:
       state_top:
         base:
           '*':
+            - apt._mapdata
             - apt.unattended
       pillars:
         top.sls:
