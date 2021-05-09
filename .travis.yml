@@ -108,22 +108,26 @@ jobs:
     # - env: INSTANCE=preferences-ubuntu-1604-master-py3
     # - env: INSTANCE=unattended-ubuntu-1604-master-py3
     - env: INSTANCE=ubuntu-1604-master-py3
-    # - env: INSTANCE=repositories-debian-10-3002-5-py3
-    # - env: INSTANCE=repositories-debian-9-3002-5-py3
-    # - env: INSTANCE=repositories-ubuntu-2004-3002-5-py3
-    # - env: INSTANCE=repositories-ubuntu-1804-3002-5-py3
-    # - env: INSTANCE=repositories-ubuntu-1604-3002-5-py3
-    # - env: INSTANCE=repositories-debian-10-3001-6-py3
-    # - env: INSTANCE=repositories-debian-9-3001-6-py3
-    # - env: INSTANCE=repositories-ubuntu-2004-3001-6-py3
-    # - env: INSTANCE=repositories-ubuntu-1804-3001-6-py3
-    # - env: INSTANCE=repositories-ubuntu-1604-3001-6-py3
-    # - env: INSTANCE=repositories-debian-10-3000-8-py3
-    # - env: INSTANCE=repositories-debian-9-3000-8-py3
-    # - env: INSTANCE=repositories-ubuntu-1804-3000-8-py3
-    # - env: INSTANCE=repositories-ubuntu-1604-3000-8-py3
-    # - env: INSTANCE=repositories-ubuntu-1804-3000-8-py2
-    # - env: INSTANCE=repositories-ubuntu-1604-3000-8-py2
+    # - env: INSTANCE=repositories-debian-10-3003-0-py3
+    # - env: INSTANCE=repositories-debian-9-3003-0-py3
+    # - env: INSTANCE=repositories-ubuntu-2004-3003-0-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-3003-0-py3
+    # - env: INSTANCE=repositories-debian-10-3002-6-py3
+    # - env: INSTANCE=repositories-debian-9-3002-6-py3
+    # - env: INSTANCE=repositories-ubuntu-2004-3002-6-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-3002-6-py3
+    # - env: INSTANCE=repositories-ubuntu-1604-3002-6-py3
+    # - env: INSTANCE=repositories-debian-10-3001-7-py3
+    # - env: INSTANCE=repositories-debian-9-3001-7-py3
+    # - env: INSTANCE=repositories-ubuntu-2004-3001-7-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-3001-7-py3
+    # - env: INSTANCE=repositories-ubuntu-1604-3001-7-py3
+    # - env: INSTANCE=repositories-debian-10-3000-9-py3
+    # - env: INSTANCE=repositories-debian-9-3000-9-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-3000-9-py3
+    # - env: INSTANCE=repositories-ubuntu-1604-3000-9-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-3000-9-py2
+    # - env: INSTANCE=repositories-ubuntu-1604-3000-9-py2
 
     ## Define the release stage that runs `semantic-release`
     - stage: 'release'
