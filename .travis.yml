@@ -103,10 +103,10 @@ jobs:
     # - env: INSTANCE=preferences-ubuntu-1804-master-py3
     # - env: INSTANCE=unattended-ubuntu-1804-master-py3
     - env: INSTANCE=ubuntu-1804-master-py3
-    # - env: INSTANCE=repositories-debian-10-3003-0-py3
-    # - env: INSTANCE=repositories-debian-9-3003-0-py3
-    # - env: INSTANCE=repositories-ubuntu-2004-3003-0-py3
-    # - env: INSTANCE=repositories-ubuntu-1804-3003-0-py3
+    # - env: INSTANCE=repositories-debian-10-3003-1-py3
+    # - env: INSTANCE=repositories-debian-9-3003-1-py3
+    # - env: INSTANCE=repositories-ubuntu-2004-3003-1-py3
+    # - env: INSTANCE=repositories-ubuntu-1804-3003-1-py3
     # - env: INSTANCE=repositories-debian-10-3002-6-py3
     # - env: INSTANCE=repositories-debian-9-3002-6-py3
     # - env: INSTANCE=repositories-ubuntu-2004-3002-6-py3
