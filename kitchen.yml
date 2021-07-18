@@ -20,6 +20,10 @@ provisioner:
 
 platforms:
   ## SALT `tiamat`
+  - name: debian-11-tiamat-py3
+    driver:
+      image: saltimages/salt-tiamat-py3:debian-11
+      run_command: /lib/systemd/systemd
   - name: debian-10-tiamat-py3
     driver:
       image: saltimages/salt-tiamat-py3:debian-10
@@ -38,6 +42,10 @@ platforms:
       run_command: /lib/systemd/systemd
 
   ## SALT `master`
+  - name: debian-11-master-py3
+    driver:
+      image: saltimages/salt-master-py3:debian-11
+      run_command: /lib/systemd/systemd
   - name: debian-10-master-py3
     driver:
       image: saltimages/salt-master-py3:debian-10
@@ -56,6 +64,10 @@ platforms:
       run_command: /lib/systemd/systemd
 
   ## SALT `3003.1`
+  - name: debian-11-3003-1-py3
+    driver:
+      image: saltimages/salt-3003.1-py3:debian-11
+      run_command: /lib/systemd/systemd
   - name: debian-10-3003-1-py3
     driver:
       image: saltimages/salt-3003.1-py3:debian-10
@@ -74,6 +86,10 @@ platforms:
       run_command: /lib/systemd/systemd
 
   ## SALT `3002.6`
+  - name: debian-11-3002-6-py3
+    driver:
+      image: saltimages/salt-3002.6-py3:debian-11
+      run_command: /lib/systemd/systemd
   - name: debian-10-3002-6-py3
     driver:
       image: saltimages/salt-3002.6-py3:debian-10
