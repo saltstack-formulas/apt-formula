@@ -113,20 +113,14 @@ jobs:
     # - env: INSTANCE=repositories-debian-9-3004-0-py3
     # - env: INSTANCE=repositories-ubuntu-2004-3004-0-py3
     # - env: INSTANCE=repositories-ubuntu-1804-3004-0-py3
-    # - env: INSTANCE=repositories-debian-11-3003-3-py3
     # - env: INSTANCE=repositories-debian-10-3003-3-py3
     # - env: INSTANCE=repositories-debian-9-3003-3-py3
     # - env: INSTANCE=repositories-ubuntu-2004-3003-3-py3
     # - env: INSTANCE=repositories-ubuntu-1804-3003-3-py3
-    # - env: INSTANCE=repositories-debian-11-3002-7-py3
     # - env: INSTANCE=repositories-debian-10-3002-7-py3
     # - env: INSTANCE=repositories-debian-9-3002-7-py3
     # - env: INSTANCE=repositories-ubuntu-2004-3002-7-py3
     # - env: INSTANCE=repositories-ubuntu-1804-3002-7-py3
-    # - env: INSTANCE=repositories-debian-10-3001-8-py3
-    # - env: INSTANCE=repositories-debian-9-3001-8-py3
-    # - env: INSTANCE=repositories-ubuntu-2004-3001-8-py3
-    # - env: INSTANCE=repositories-ubuntu-1804-3001-8-py3
 
     ## Define the release stage that runs `semantic-release`
     - stage: 'release'
