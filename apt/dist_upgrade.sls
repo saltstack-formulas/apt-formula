@@ -1,5 +1,5 @@
 apt-get -y dist-upgrade:
-  cmd.wait:
-    - watch:
+  cmd.run:
+    - onchanges:
       - file: /etc/apt/sources.list
       - file: /etc/apt/sources.list.d

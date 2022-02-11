@@ -144,7 +144,7 @@ suites:
             '*':
               - apt
       pillars_from_files:
-        apt.sls: test/salt/pillar/repositories.pillar.sls
+        apt.sls: test/salt/pillar/repositories.sls
     verifier:
       inspec_tests:
         - path: test/integration/repositories
@@ -161,7 +161,7 @@ suites:
             '*':
               - apt
       pillars_from_files:
-        apt.sls: test/salt/pillar/preferences.pillar.sls
+        apt.sls: test/salt/pillar/preferences.sls
     verifier:
       inspec_tests:
         - path: test/integration/preferences
@@ -178,7 +178,7 @@ suites:
             '*':
               - apt
       pillars_from_files:
-        apt.sls: test/salt/pillar/unattended.pillar.sls
+        apt.sls: test/salt/pillar/unattended.sls
     verifier:
       inspec_tests:
         - path: test/integration/unattended
