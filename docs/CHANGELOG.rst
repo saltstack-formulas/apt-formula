@@ -2,6 +2,46 @@
 Changelog
 =========
 
+`0.10.4 <https://github.com/saltstack-formulas/apt-formula/compare/v0.10.3...v0.10.4>`_ (2022-02-12)
+--------------------------------------------------------------------------------------------------------
+
+Code Refactoring
+^^^^^^^^^^^^^^^^
+
+
+* **salt-lint:** fix violations (\ `7cc688c <https://github.com/saltstack-formulas/apt-formula/commit/7cc688cf1554ebff114321f1be09ea59f83d9c66>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* update linters to latest versions [skip ci] (\ `37ca1fa <https://github.com/saltstack-formulas/apt-formula/commit/37ca1fa0574550758947bd0a2b26e5944121d222>`_\ )
+* **3003.1:** update inc. AlmaLinux, Rocky & ``rst-lint`` [skip ci] (\ `97b0af6 <https://github.com/saltstack-formulas/apt-formula/commit/97b0af695acd8adfd3c3a048de21d03a04560636>`_\ )
+* **commitlint:** ensure ``upstream/master`` uses main repo URL [skip ci] (\ `b4cce02 <https://github.com/saltstack-formulas/apt-formula/commit/b4cce02adfbd902ee86d175f66c61f5b41b37b15>`_\ )
+* **gemfile:** allow rubygems proxy to be provided as an env var [skip ci] (\ `a8d9d34 <https://github.com/saltstack-formulas/apt-formula/commit/a8d9d347717e17afc0f149f9f23852bf3b26cde9>`_\ )
+* **gemfile+lock:** use ``ssf`` customised ``inspec`` repo [skip ci] (\ `1f136cd <https://github.com/saltstack-formulas/apt-formula/commit/1f136cd52c960ffbd43f97c4e4d658e827c34bc3>`_\ )
+* **gemfile+lock:** use ``ssf`` customised ``kitchen-docker`` repo [skip ci] (\ `ce4f1a8 <https://github.com/saltstack-formulas/apt-formula/commit/ce4f1a8488ac65a0d3e34d2f28a47007924958fc>`_\ )
+* **gitlab-ci:** add ``rubocop`` linter (with ``allow_failure``\ ) [skip ci] (\ `057b19e <https://github.com/saltstack-formulas/apt-formula/commit/057b19ec7ad97afec550ca7c2dbbf28acf53d311>`_\ )
+* **gitlab-ci:** use GitLab CI as Travis CI replacement (\ `0f9b059 <https://github.com/saltstack-formulas/apt-formula/commit/0f9b05940899957ac1c1fe4d6594cbab1d422e56>`_\ )
+* **kitchen:** move ``provisioner`` block & update ``run_command`` [skip ci] (\ `d08806c <https://github.com/saltstack-formulas/apt-formula/commit/d08806c07d7382fb9e6965c0db46b916aad3a386>`_\ )
+* **kitchen+ci:** update with ``3004`` pre-salted images/boxes [skip ci] (\ `380c689 <https://github.com/saltstack-formulas/apt-formula/commit/380c6894b4c022ca4586693d8e9fd03845aa3b61>`_\ )
+* **kitchen+ci:** update with latest ``3003.2`` pre-salted images [skip ci] (\ `efe8592 <https://github.com/saltstack-formulas/apt-formula/commit/efe8592337a698ca3361076e1dec453dca9d69d9>`_\ )
+* **kitchen+ci:** update with latest CVE pre-salted images [skip ci] (\ `9762abf <https://github.com/saltstack-formulas/apt-formula/commit/9762abfb4d3fecd5d4a9028c2e4a6e09667e7ceb>`_\ )
+* **kitchen+ci:** use latest pre-salted images (after CVE) [skip ci] (\ `d5c38c1 <https://github.com/saltstack-formulas/apt-formula/commit/d5c38c1dda806cf874d66292a862cea7b6c21ea1>`_\ )
+* **kitchen+gitlab:** adjust matrix to add ``3003`` [skip ci] (\ `6be32dc <https://github.com/saltstack-formulas/apt-formula/commit/6be32dcd4254ef6b0dc7d9033b2b030f5701322a>`_\ )
+* **kitchen+gitlab:** remove Ubuntu 16.04 & Fedora 32 (EOL) [skip ci] (\ `8086687 <https://github.com/saltstack-formulas/apt-formula/commit/8086687001e0e5d38472f65a7b1d2097d818b1b8>`_\ )
+* **kitchen+gitlab:** update for new pre-salted images [skip ci] (\ `091870b <https://github.com/saltstack-formulas/apt-formula/commit/091870b18c7b1c47536c7df012a553f29a78648c>`_\ )
+* add ``arch-master`` to matrix and update ``.travis.yml`` [skip ci] (\ `5637e07 <https://github.com/saltstack-formulas/apt-formula/commit/5637e073b698b3970d99901e1a4abd24fa34318b>`_\ )
+* add Debian 11 Bullseye & update ``yamllint`` configuration [skip ci] (\ `758d646 <https://github.com/saltstack-formulas/apt-formula/commit/758d646d1e509e1e1a10bfa9b30c3f8261d6bf30>`_\ )
+* **kitchen+gitlab-ci:** use latest pre-salted images [skip ci] (\ `d486305 <https://github.com/saltstack-formulas/apt-formula/commit/d48630589f28fc42d8f0ddb65b6c6d1de3da12b0>`_\ )
+* **pre-commit:** update hook for ``rubocop`` (\ `67c1130 <https://github.com/saltstack-formulas/apt-formula/commit/67c1130d8957a47ddc71a45a438bb6e74b4a10ac>`_\ )
+
+Tests
+^^^^^
+
+
+* standardise use of ``share`` suite & ``_mapdata`` state [skip ci] (\ `9f6b2b1 <https://github.com/saltstack-formulas/apt-formula/commit/9f6b2b1250ae4d134d3904cd09df9902bb42f677>`_\ )
+
 `0.10.3 <https://github.com/saltstack-formulas/apt-formula/compare/v0.10.2...v0.10.3>`_ (2020-10-19)
 --------------------------------------------------------------------------------------------------------
 
