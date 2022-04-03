@@ -63,62 +63,62 @@ platforms:
       image: saltimages/salt-master-py3:ubuntu-18.04
       run_command: /lib/systemd/systemd
 
-  ## SALT `3004.0`
-  - name: debian-11-3004-0-py3
+  ## SALT `3004.1`
+  - name: debian-11-3004-1-py3
     driver:
-      image: saltimages/salt-3004.0-py3:debian-11
+      image: saltimages/salt-3004.1-py3:debian-11
       run_command: /lib/systemd/systemd
-  - name: debian-10-3004-0-py3
+  - name: debian-10-3004-1-py3
     driver:
-      image: saltimages/salt-3004.0-py3:debian-10
+      image: saltimages/salt-3004.1-py3:debian-10
       run_command: /lib/systemd/systemd
-  - name: debian-9-3004-0-py3
+  - name: debian-9-3004-1-py3
     driver:
-      image: saltimages/salt-3004.0-py3:debian-9
+      image: saltimages/salt-3004.1-py3:debian-9
       run_command: /lib/systemd/systemd
-  - name: ubuntu-2004-3004-0-py3
+  - name: ubuntu-2004-3004-1-py3
     driver:
-      image: saltimages/salt-3004.0-py3:ubuntu-20.04
+      image: saltimages/salt-3004.1-py3:ubuntu-20.04
       run_command: /lib/systemd/systemd
-  - name: ubuntu-1804-3004-0-py3
+  - name: ubuntu-1804-3004-1-py3
     driver:
-      image: saltimages/salt-3004.0-py3:ubuntu-18.04
-      run_command: /lib/systemd/systemd
-
-  ## SALT `3003.3`
-  - name: debian-10-3003-3-py3
-    driver:
-      image: saltimages/salt-3003.3-py3:debian-10
-      run_command: /lib/systemd/systemd
-  - name: debian-9-3003-3-py3
-    driver:
-      image: saltimages/salt-3003.3-py3:debian-9
-      run_command: /lib/systemd/systemd
-  - name: ubuntu-2004-3003-3-py3
-    driver:
-      image: saltimages/salt-3003.3-py3:ubuntu-20.04
-      run_command: /lib/systemd/systemd
-  - name: ubuntu-1804-3003-3-py3
-    driver:
-      image: saltimages/salt-3003.3-py3:ubuntu-18.04
+      image: saltimages/salt-3004.1-py3:ubuntu-18.04
       run_command: /lib/systemd/systemd
 
-  ## SALT `3002.7`
-  - name: debian-10-3002-7-py3
+  ## SALT `3003.4`
+  - name: debian-10-3003-4-py3
     driver:
-      image: saltimages/salt-3002.7-py3:debian-10
+      image: saltimages/salt-3003.4-py3:debian-10
       run_command: /lib/systemd/systemd
-  - name: debian-9-3002-7-py3
+  - name: debian-9-3003-4-py3
     driver:
-      image: saltimages/salt-3002.7-py3:debian-9
+      image: saltimages/salt-3003.4-py3:debian-9
       run_command: /lib/systemd/systemd
-  - name: ubuntu-2004-3002-7-py3
+  - name: ubuntu-2004-3003-4-py3
     driver:
-      image: saltimages/salt-3002.7-py3:ubuntu-20.04
+      image: saltimages/salt-3003.4-py3:ubuntu-20.04
       run_command: /lib/systemd/systemd
-  - name: ubuntu-1804-3002-7-py3
+  - name: ubuntu-1804-3003-4-py3
     driver:
-      image: saltimages/salt-3002.7-py3:ubuntu-18.04
+      image: saltimages/salt-3003.4-py3:ubuntu-18.04
+      run_command: /lib/systemd/systemd
+
+  ## SALT `3002.8`
+  - name: debian-10-3002-8-py3
+    driver:
+      image: saltimages/salt-3002.8-py3:debian-10
+      run_command: /lib/systemd/systemd
+  - name: debian-9-3002-8-py3
+    driver:
+      image: saltimages/salt-3002.8-py3:debian-9
+      run_command: /lib/systemd/systemd
+  - name: ubuntu-2004-3002-8-py3
+    driver:
+      image: saltimages/salt-3002.8-py3:ubuntu-20.04
+      run_command: /lib/systemd/systemd
+  - name: ubuntu-1804-3002-8-py3
+    driver:
+      image: saltimages/salt-3002.8-py3:ubuntu-18.04
       run_command: /lib/systemd/systemd
 
 verifier:
