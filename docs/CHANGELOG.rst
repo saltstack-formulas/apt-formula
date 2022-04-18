@@ -2,6 +2,27 @@
 Changelog
 =========
 
+`0.11.0 <https://github.com/saltstack-formulas/apt-formula/compare/v0.10.4...v0.11.0>`_ (2022-04-18)
+--------------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **kitchen+gitlab:** update for new pre-salted images [skip ci] (\ `31773f1 <https://github.com/saltstack-formulas/apt-formula/commit/31773f18966831cba08939cd7987750c0961a491>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **repositories:** allow to specify custom filename (\ `2a7e4af <https://github.com/saltstack-formulas/apt-formula/commit/2a7e4afe5a2804035a09a742361354c8039a7d80>`_\ )
+
+Tests
+^^^^^
+
+
+* **system:** add ``build_platform_codename`` [skip ci] (\ `1a132d8 <https://github.com/saltstack-formulas/apt-formula/commit/1a132d84422218bc12f31890c1a92b51bb3ec71c>`_\ )
+
 `0.10.4 <https://github.com/saltstack-formulas/apt-formula/compare/v0.10.3...v0.10.4>`_ (2022-02-12)
 --------------------------------------------------------------------------------------------------------
 
