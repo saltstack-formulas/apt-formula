@@ -58,12 +58,13 @@
 {%- set r_keyserver = args.keyserver if args.keyserver is defined else apt_map.default_keyserver %}
 
   {%- for type in args.type|d(['binary']) %}
-  {%- set r_type = 'deb-src' if type == 'source' else 'deb' %}
+    {%- set r_type = 'deb-src' if type == 'source' else 'deb' %}
+    {%- set r_file = args.filename if args.filename is defined else repo ~ '-' ~ type ~ '.list' %}
 
 {{ r_type }} {{ repo }}:
   pkgrepo.managed:
     - name: {{ r_type }} {{ r_options }} {{ r_url }} {{ r_distro }} {{ r_comps }}
-    - file: {{ sources_list_dir }}/{{ repo }}-{{ type }}.list
+    - file: {{ sources_list_dir }}/{{ r_file }}
     {# You can use either keyid+keyserver or key_url. If both are provided
        the latter will be used. #}
     {% if args.key_url is defined %}
