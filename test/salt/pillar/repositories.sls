@@ -19,3 +19,11 @@ apt:
       arch: [amd64]
       comps: []
       key_url: https://cli-assets.heroku.com/apt/release.key
+    raspbian:
+      # If you want to use a particular filename under /etc/apt/sources.list.d
+      # set it here, with extension included
+      filename: my_raspbian_repo.list
+      distro: stable
+      url: http://archive.raspbian.org/raspbian
+      type: [source]
+      key_url: https://archive.raspbian.org/raspbian.public.key

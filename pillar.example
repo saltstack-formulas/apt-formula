@@ -98,6 +98,9 @@ apt:
       comps: [main, contrib, non-free]
       key_url: https://ftp-master.debian.org/keys/archive-key-10.asc
     raspbian:
+      # If you want to use a particular filename under /etc/apt/sources.list.d
+      # set it here, with extension included
+      filename: my_raspbian_repo.list
       distro: stable
       url: http://archive.raspbian.org/raspbian
       type: [source]
