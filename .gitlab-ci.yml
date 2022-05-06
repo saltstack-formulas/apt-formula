@@ -134,6 +134,7 @@ rubocop:
 # repositories-debian-11-tiamat-py3: {extends: '.test_instance'}
 # repositories-debian-10-tiamat-py3: {extends: '.test_instance'}
 # repositories-debian-9-tiamat-py3: {extends: '.test_instance'}
+# repositories-ubuntu-2204-tiamat-py3: {extends: '.test_instance_failure_permitted'}
 # repositories-ubuntu-2004-tiamat-py3: {extends: '.test_instance'}
 # repositories-ubuntu-1804-tiamat-py3: {extends: '.test_instance'}
 # repositories-debian-11-master-py3: {extends: '.test_instance'}
@@ -148,6 +149,10 @@ debian-10-master-py3: {extends: '.test_instance'}
 # preferences-debian-9-master-py3: {extends: '.test_instance'}
 # unattended-debian-9-master-py3: {extends: '.test_instance'}
 debian-9-master-py3: {extends: '.test_instance'}
+# repositories-ubuntu-2204-master-py3: {extends: '.test_instance_failure_permitted'}
+# preferences-ubuntu-2204-master-py3: {extends: '.test_instance_failure_permitted'}
+# unattended-ubuntu-2204-master-py3: {extends: '.test_instance_failure_permitted'}
+ubuntu-2204-master-py3: {extends: '.test_instance_failure_permitted'}
 # repositories-ubuntu-2004-master-py3: {extends: '.test_instance'}
 # preferences-ubuntu-2004-master-py3: {extends: '.test_instance'}
 # unattended-ubuntu-2004-master-py3: {extends: '.test_instance'}
@@ -159,6 +164,7 @@ ubuntu-1804-master-py3: {extends: '.test_instance'}
 # repositories-debian-11-3004-1-py3: {extends: '.test_instance'}
 # repositories-debian-10-3004-1-py3: {extends: '.test_instance'}
 # repositories-debian-9-3004-1-py3: {extends: '.test_instance'}
+# repositories-ubuntu-2204-3004-1-py3: {extends: '.test_instance_failure_permitted'}
 # repositories-ubuntu-2004-3004-1-py3: {extends: '.test_instance'}
 # repositories-ubuntu-1804-3004-1-py3: {extends: '.test_instance'}
 # repositories-debian-10-3003-4-py3: {extends: '.test_instance'}
