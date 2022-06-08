@@ -171,10 +171,6 @@ ubuntu-1804-master-py3: {extends: '.test_instance'}
 # repositories-debian-9-3003-4-py3: {extends: '.test_instance'}
 # repositories-ubuntu-2004-3003-4-py3: {extends: '.test_instance'}
 # repositories-ubuntu-1804-3003-4-py3: {extends: '.test_instance'}
-# repositories-debian-10-3002-8-py3: {extends: '.test_instance'}
-# repositories-debian-9-3002-8-py3: {extends: '.test_instance'}
-# repositories-ubuntu-2004-3002-8-py3: {extends: '.test_instance'}
-# repositories-ubuntu-1804-3002-8-py3: {extends: '.test_instance'}
 # yamllint enable rule:line-length
 
 ###############################################################################
