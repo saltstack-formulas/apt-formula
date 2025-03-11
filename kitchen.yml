@@ -19,33 +19,11 @@ provisioner:
     - .git
 
 platforms:
-  ## SALT `tiamat`
-  - name: debian-11-tiamat-py3
-    driver:
-      image: saltimages/salt-tiamat-py3:debian-11
-      run_command: /lib/systemd/systemd
-  - name: debian-10-tiamat-py3
-    driver:
-      image: saltimages/salt-tiamat-py3:debian-10
-      run_command: /lib/systemd/systemd
-  - name: debian-9-tiamat-py3
-    driver:
-      image: saltimages/salt-tiamat-py3:debian-9
-      run_command: /lib/systemd/systemd
-  - name: ubuntu-2204-tiamat-py3
-    driver:
-      image: saltimages/salt-tiamat-py3:ubuntu-22.04
-      run_command: /lib/systemd/systemd
-  - name: ubuntu-2004-tiamat-py3
-    driver:
-      image: saltimages/salt-tiamat-py3:ubuntu-20.04
-      run_command: /lib/systemd/systemd
-  - name: ubuntu-1804-tiamat-py3
-    driver:
-      image: saltimages/salt-tiamat-py3:ubuntu-18.04
-      run_command: /lib/systemd/systemd
-
   ## SALT `master`
+  - name: debian-12-master-py3
+    driver:
+      image: saltimages/salt-master-py3:debian-12
+      run_command: /lib/systemd/systemd
   - name: debian-11-master-py3
     driver:
       image: saltimages/salt-master-py3:debian-11
@@ -54,9 +32,9 @@ platforms:
     driver:
       image: saltimages/salt-master-py3:debian-10
       run_command: /lib/systemd/systemd
-  - name: debian-9-master-py3
+  - name: ubuntu-2404-master-py3
     driver:
-      image: saltimages/salt-master-py3:debian-9
+      image: saltimages/salt-master-py3:ubuntu-24.04
       run_command: /lib/systemd/systemd
   - name: ubuntu-2204-master-py3
     driver:
@@ -71,48 +49,64 @@ platforms:
       image: saltimages/salt-master-py3:ubuntu-18.04
       run_command: /lib/systemd/systemd
 
-  ## SALT `3004.1`
-  - name: debian-11-3004-1-py3
+  ## SALT `3007.1`
+  - name: debian-12-3007-1-py3
     driver:
-      image: saltimages/salt-3004.1-py3:debian-11
+      image: saltimages/salt-3007.1-py3:debian-12
       run_command: /lib/systemd/systemd
-  - name: debian-10-3004-1-py3
+  - name: debian-11-3007-1-py3
     driver:
-      image: saltimages/salt-3004.1-py3:debian-10
+      image: saltimages/salt-3007.1-py3:debian-11
       run_command: /lib/systemd/systemd
-  - name: debian-9-3004-1-py3
+  - name: debian-10-3007-1-py3
     driver:
-      image: saltimages/salt-3004.1-py3:debian-9
+      image: saltimages/salt-3007.1-py3:debian-10
       run_command: /lib/systemd/systemd
-  - name: ubuntu-2204-3004-1-py3
+  - name: ubuntu-2404-3007-1-py3
     driver:
-      image: saltimages/salt-3004.1-py3:ubuntu-22.04
+      image: saltimages/salt-3007.1-py3:ubuntu-24.04
       run_command: /lib/systemd/systemd
-  - name: ubuntu-2004-3004-1-py3
+  - name: ubuntu-2204-3007-1-py3
     driver:
-      image: saltimages/salt-3004.1-py3:ubuntu-20.04
+      image: saltimages/salt-3007.1-py3:ubuntu-22.04
       run_command: /lib/systemd/systemd
-  - name: ubuntu-1804-3004-1-py3
+  - name: ubuntu-2004-3007-1-py3
     driver:
-      image: saltimages/salt-3004.1-py3:ubuntu-18.04
+      image: saltimages/salt-3007.1-py3:ubuntu-20.04
+      run_command: /lib/systemd/systemd
+  - name: ubuntu-1804-3007-1-py3
+    driver:
+      image: saltimages/salt-3007.1-py3:ubuntu-18.04
       run_command: /lib/systemd/systemd
 
-  ## SALT `3003.4`
-  - name: debian-10-3003-4-py3
+  ## SALT `3006.9`
+  - name: debian-12-3006-9-py3
     driver:
-      image: saltimages/salt-3003.4-py3:debian-10
+      image: saltimages/salt-3006.9-py3:debian-12
       run_command: /lib/systemd/systemd
-  - name: debian-9-3003-4-py3
+  - name: debian-11-3006-9-py3
     driver:
-      image: saltimages/salt-3003.4-py3:debian-9
+      image: saltimages/salt-3006.9-py3:debian-11
       run_command: /lib/systemd/systemd
-  - name: ubuntu-2004-3003-4-py3
+  - name: debian-10-3006-9-py3
     driver:
-      image: saltimages/salt-3003.4-py3:ubuntu-20.04
+      image: saltimages/salt-3006.9-py3:debian-10
       run_command: /lib/systemd/systemd
-  - name: ubuntu-1804-3003-4-py3
+  - name: ubuntu-2404-3006-9-py3
     driver:
-      image: saltimages/salt-3003.4-py3:ubuntu-18.04
+      image: saltimages/salt-3006.9-py3:ubuntu-24.04
+      run_command: /lib/systemd/systemd
+  - name: ubuntu-2204-3006-9-py3
+    driver:
+      image: saltimages/salt-3006.9-py3:ubuntu-22.04
+      run_command: /lib/systemd/systemd
+  - name: ubuntu-2004-3006-9-py3
+    driver:
+      image: saltimages/salt-3006.9-py3:ubuntu-20.04
+      run_command: /lib/systemd/systemd
+  - name: ubuntu-1804-3006-9-py3
+    driver:
+      image: saltimages/salt-3006.9-py3:ubuntu-18.04
       run_command: /lib/systemd/systemd
 
 verifier:

@@ -131,12 +131,10 @@ rubocop:
 # Make sure the instances listed below match up with
 # the `platforms` defined in `kitchen.yml`
 # yamllint disable rule:line-length
-# repositories-debian-11-tiamat-py3: {extends: '.test_instance'}
-# repositories-debian-10-tiamat-py3: {extends: '.test_instance'}
-# repositories-debian-9-tiamat-py3: {extends: '.test_instance'}
-# repositories-ubuntu-2204-tiamat-py3: {extends: '.test_instance_failure_permitted'}
-# repositories-ubuntu-2004-tiamat-py3: {extends: '.test_instance'}
-# repositories-ubuntu-1804-tiamat-py3: {extends: '.test_instance'}
+# repositories-debian-12-master-py3: {extends: '.test_instance_failure_permitted'}
+# preferences-debian-12-master-py3: {extends: '.test_instance_failure_permitted'}
+# unattended-debian-12-master-py3: {extends: '.test_instance_failure_permitted'}
+# debian-12-master-py3: {extends: '.test_instance_failure_permitted'}
 # repositories-debian-11-master-py3: {extends: '.test_instance'}
 # preferences-debian-11-master-py3: {extends: '.test_instance'}
 # unattended-debian-11-master-py3: {extends: '.test_instance'}
@@ -145,14 +143,14 @@ debian-11-master-py3: {extends: '.test_instance'}
 # preferences-debian-10-master-py3: {extends: '.test_instance'}
 # unattended-debian-10-master-py3: {extends: '.test_instance'}
 debian-10-master-py3: {extends: '.test_instance'}
-# repositories-debian-9-master-py3: {extends: '.test_instance'}
-# preferences-debian-9-master-py3: {extends: '.test_instance'}
-# unattended-debian-9-master-py3: {extends: '.test_instance'}
-debian-9-master-py3: {extends: '.test_instance'}
-# repositories-ubuntu-2204-master-py3: {extends: '.test_instance_failure_permitted'}
-# preferences-ubuntu-2204-master-py3: {extends: '.test_instance_failure_permitted'}
-# unattended-ubuntu-2204-master-py3: {extends: '.test_instance_failure_permitted'}
-ubuntu-2204-master-py3: {extends: '.test_instance_failure_permitted'}
+# repositories-ubuntu-2404-master-py3: {extends: '.test_instance_failure_permitted'}
+# preferences-ubuntu-2404-master-py3: {extends: '.test_instance_failure_permitted'}
+# unattended-ubuntu-2404-master-py3: {extends: '.test_instance_failure_permitted'}
+# ubuntu-2404-master-py3: {extends: '.test_instance_failure_permitted'}
+# repositories-ubuntu-2204-master-py3: {extends: '.test_instance'}
+# preferences-ubuntu-2204-master-py3: {extends: '.test_instance'}
+# unattended-ubuntu-2204-master-py3: {extends: '.test_instance'}
+ubuntu-2204-master-py3: {extends: '.test_instance'}
 # repositories-ubuntu-2004-master-py3: {extends: '.test_instance'}
 # preferences-ubuntu-2004-master-py3: {extends: '.test_instance'}
 # unattended-ubuntu-2004-master-py3: {extends: '.test_instance'}
@@ -161,16 +159,20 @@ ubuntu-2004-master-py3: {extends: '.test_instance'}
 # preferences-ubuntu-1804-master-py3: {extends: '.test_instance'}
 # unattended-ubuntu-1804-master-py3: {extends: '.test_instance'}
 ubuntu-1804-master-py3: {extends: '.test_instance'}
-# repositories-debian-11-3004-1-py3: {extends: '.test_instance'}
-# repositories-debian-10-3004-1-py3: {extends: '.test_instance'}
-# repositories-debian-9-3004-1-py3: {extends: '.test_instance'}
-# repositories-ubuntu-2204-3004-1-py3: {extends: '.test_instance_failure_permitted'}
-# repositories-ubuntu-2004-3004-1-py3: {extends: '.test_instance'}
-# repositories-ubuntu-1804-3004-1-py3: {extends: '.test_instance'}
-# repositories-debian-10-3003-4-py3: {extends: '.test_instance'}
-# repositories-debian-9-3003-4-py3: {extends: '.test_instance'}
-# repositories-ubuntu-2004-3003-4-py3: {extends: '.test_instance'}
-# repositories-ubuntu-1804-3003-4-py3: {extends: '.test_instance'}
+# repositories-debian-12-3007-1-py3: {extends: '.test_instance_failure_permitted'}
+# repositories-debian-11-3007-1-py3: {extends: '.test_instance'}
+# repositories-debian-10-3007-1-py3: {extends: '.test_instance'}
+# repositories-ubuntu-2404-3007-1-py3: {extends: '.test_instance_failure_permitted'}
+# repositories-ubuntu-2204-3007-1-py3: {extends: '.test_instance'}
+# repositories-ubuntu-2004-3007-1-py3: {extends: '.test_instance'}
+# repositories-ubuntu-1804-3007-1-py3: {extends: '.test_instance'}
+# repositories-debian-12-3006-9-py3: {extends: '.test_instance_failure_permitted'}
+# repositories-debian-11-3006-9-py3: {extends: '.test_instance'}
+# repositories-debian-10-3006-9-py3: {extends: '.test_instance'}
+# repositories-ubuntu-2404-3006-9-py3: {extends: '.test_instance_failure_permitted'}
+# repositories-ubuntu-2204-3006-9-py3: {extends: '.test_instance'}
+# repositories-ubuntu-2004-3006-9-py3: {extends: '.test_instance'}
+# repositories-ubuntu-1804-3006-9-py3: {extends: '.test_instance'}
 # yamllint enable rule:line-length
 
 ###############################################################################

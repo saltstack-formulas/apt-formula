@@ -27,3 +27,11 @@ apt:
       url: http://archive.raspbian.org/raspbian
       type: [source]
       key_url: https://archive.raspbian.org/raspbian.public.key
+    saltstack:
+      filename: saltstack.list
+      distro: stable
+      url: https://packages.broadcom.com/artifactory/saltproject-deb
+      comps: [main]
+      type: [binary]
+      key_url: https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public  # yamllint disable-line rule:line-length
+      opts: "signed-by=/etc/apt/keyrings/salt-archive-keyring.pgp"
