@@ -1,5 +1,7 @@
 {% set distribution = salt['grains.get']('lsb_distrib_codename') %}
 {% set arch = salt['grains.get']('osarch').split(' ') %}
+{% set debian_comp = ['main', 'contrib', 'non-free', 'non-free-firmware'] if salt['grains.get']('osmajorrelease') >= 12  else ['main', 'contrib', 'non-free'] %}
+
 {% set apt = salt['grains.filter_by']({
     'Debian': {
         'pkgs': ['unattended-upgrades'],
@@ -26,19 +28,22 @@
                 'distro': distribution,
                 'url': 'http://deb.debian.org/debian/',
                 'arch': arch,
-                'comps': ['main'],
+                'comps': debian_comp,
+                'opts': 'signed-by=/etc/apt/keyrings/salt-archive-keyring.pgp'
             },
             'security-stable': {
-                'distro': distribution ~ '/updates',
+                'distro': distribution ~ '-security',
                 'url': 'http://security.debian.org/',
                 'arch': arch,
-                'comps': ['main'],
+                'comps': debian_comp,
+                'opts': 'signed-by=/etc/apt/keyrings/salt-archive-keyring.pgp'
             },
             'default-updates': {
                 'distro': distribution ~ '-updates',
                 'url': 'http://deb.debian.org/debian/',
                 'arch': arch,
-                'comps': ['main'],
+                'comps': debian_comp,
+                'opts': 'signed-by=/etc/apt/keyrings/salt-archive-keyring.pgp'
             },
         },
     },
@@ -87,4 +92,5 @@
     'Mint': {
         'keyring_package': 'linuxmint-keyring'
     },
+
 }, grain='oscodename', merge=salt['pillar.get']('apt:lookup'), default='Debian')) %}

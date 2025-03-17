@@ -6,13 +6,10 @@ apt:
   clean_sources_list_d: true
 
   repositories:
-    multimedia-stable:
-      distro: stable
-      url: http://www.deb-multimedia.org
-      arch: [amd64]
-      comps: [main]
-      keyid: 5C808C2B65558117
-      keyserver: keyserver.ubuntu.com
+    unmanaged:
+      unmanaged: true # do not remove this file when clean_sources_list_d=true
+      filename: unmanaged.list # optional
+
     heroku:
       distro: ./
       url: https://cli-assets.heroku.com/apt

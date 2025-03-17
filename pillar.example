@@ -136,7 +136,8 @@ apt:
       type: [binary]
       key_url: https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public  # yamllint disable-line rule:line-length
       opts: "signed-by=/etc/apt/keyrings/salt-archive-keyring.pgp"
-
+    rabbitmq:
+      unmanaged: true # useful when rabbitmq.list is managed by another formula
 
   preferences:
     00-rspamd:

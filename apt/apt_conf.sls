@@ -18,7 +18,7 @@
 
 {{ confd_dir }}:
   file.directory:
-    - mode: 755
+    - mode: '0755'
     - user: root
     - group: root
     - clean: {{ clean_apt_conf_d }}
@@ -30,7 +30,7 @@
     - template: jinja
     - user: root
     - group: root
-    - mode: 644
+    - mode: '0644'
     - context:
         data: {{ contents }}
     - require_in:

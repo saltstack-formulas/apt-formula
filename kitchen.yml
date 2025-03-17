@@ -123,6 +123,7 @@ suites:
       state_top:
         base:
           '*':
+            - states/unmanaged
             - apt._mapdata
             - apt.repositories
             - apt.update
@@ -133,6 +134,9 @@ suites:
               - apt
       pillars_from_files:
         apt.sls: test/salt/pillar/repositories.sls
+      dependencies:
+        - name: states
+          path: ./test/salt
     verifier:
       inspec_tests:
         - path: test/integration/repositories

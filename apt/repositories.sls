@@ -25,12 +25,28 @@
     - replace: False
   {% endif %}
 
+{% set excluded_sources = [] %}
+{% set unmanaged_repos = [] %}
+{% for repo, args in repositories.items() %}
+  {% if args.unmanaged is defined and args.unmanaged %}
+    {# repo.list is considered the filename unless filename is explicitly defined.
+     # managed repo lists files are constructed repo-type.list #}
+    {% do excluded_sources.append(args.filename if args.filename is defined else repo ~ '.list') %}
+    {% do unmanaged_repos.append(repo) %}
+  {% endif %}
+{% endfor %}
+{% for repo in unmanaged_repos %}
+  {# remove these repo's to avoid pgrepo.managed loop #}
+  {% do repositories.pop(repo) %}
+{% endfor %}
+
 {{ sources_list_dir }}:
   file.directory:
     - mode: '0755'
     - user: root
     - group: root
     - clean: {{ clean_sources_list_d }}
+    - exclude_pat: {{ excluded_sources | json }}
 
 {{ keyrings_dir }}:
   file.directory:
