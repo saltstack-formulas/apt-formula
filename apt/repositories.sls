@@ -96,7 +96,13 @@
     {% endif %}
     - onchanges_in:
       - module: apt.refresh_db
-
+  file.managed:
+    - name: {{ sources_list_dir }}/{{ r_file }}
+    - replace: false
+    - require_in:
+      - file: {{ sources_list_dir }}
+      # require_in the directory clean state
+      # This way, we don't remove all the files, just to add them again.
   {%- endfor %}
 {% endfor %}
 
