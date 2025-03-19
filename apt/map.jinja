@@ -29,21 +29,21 @@
                 'url': 'http://deb.debian.org/debian/',
                 'arch': arch,
                 'comps': debian_comp,
-                'opts': 'signed-by=/etc/apt/keyrings/salt-archive-keyring.pgp'
+                'opts': 'signed-by=/usr/share/keyrings/debian-archive-keyring.gpg'
             },
             'security-stable': {
                 'distro': distribution ~ '-security',
                 'url': 'http://security.debian.org/',
                 'arch': arch,
                 'comps': debian_comp,
-                'opts': 'signed-by=/etc/apt/keyrings/salt-archive-keyring.pgp'
+                'opts': 'signed-by=/usr/share/keyrings/debian-archive-keyring.gpg'
             },
             'default-updates': {
                 'distro': distribution ~ '-updates',
                 'url': 'http://deb.debian.org/debian/',
                 'arch': arch,
                 'comps': debian_comp,
-                'opts': 'signed-by=/etc/apt/keyrings/salt-archive-keyring.pgp'
+                'opts': 'signed-by=/usr/share/keyrings/debian-archive-keyring.gpg'
             },
         },
     },
