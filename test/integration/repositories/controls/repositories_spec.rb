@@ -64,4 +64,23 @@ control 'Apt repositories' do
   describe file('/etc/apt/sources.list.d/raspbian-binary.list') do
     it { should_not exist }
   end
+
+  describe file('/etc/apt/sources.list.d/saltstack.list') do
+    it { should exist }
+    it { should be_owned_by 'root' }
+    it { should be_grouped_into 'root' }
+    its('mode') { should cmp '0644' }
+    its(:content) do
+      should match(
+        %r{deb \[\s?signed-by=/etc/apt/keyrings/salt-archive-keyring.pgp\s?\] https://packages.broadcom.com/artifactory/saltproject-deb stable main}
+      )
+    end
+  end
+
+  describe file('/etc/apt/keyrings/salt-archive-keyring.pgp') do
+    it { should exist }
+    it { should be_owned_by 'root' }
+    it { should be_grouped_into 'root' }
+    its('mode') { should cmp '0644' }
+  end
 end
