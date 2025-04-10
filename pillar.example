@@ -126,6 +126,8 @@ apt:
       opts:
         trusted: 'yes'
         another: whatever
+    rabbitmq:
+      unmanaged: true  # useful when rabbitmq.list is managed by another formula
 
   preferences:
     00-rspamd:
