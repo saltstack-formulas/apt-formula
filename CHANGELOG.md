@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.11.1](https://github.com/saltstack-formulas/apt-formula/compare/v0.11.0...v0.11.1) (2025-04-10)
+
+
+### Continuous Integration
+
+* update `pre-commit` configuration inc. for pre-commit.ci [skip ci] ([347dc41](https://github.com/saltstack-formulas/apt-formula/commit/347dc41faa1520a83e79adc814099abf985612d1))
+* use latest test images ([222aa6c](https://github.com/saltstack-formulas/apt-formula/commit/222aa6c79b7e5b8c4907666b6b361c7885ef17f8))
+
+
+### Tests
+
+* **system.rb:** add support for `mac_os_x` [skip ci] ([bb4d0f8](https://github.com/saltstack-formulas/apt-formula/commit/bb4d0f86db59cf323032c5cee5c8cba22c2fa9cf))
+
 # [0.11.0](https://github.com/saltstack-formulas/apt-formula/compare/v0.10.4...v0.11.0) (2022-04-18)
 
 
