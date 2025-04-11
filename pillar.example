@@ -14,6 +14,9 @@ apt:
   remove_preferences: true
   clean_preferences_d: true
 
+  keyrings_dir: '/etc/apt/keyrings'
+  clean_keyrings_d: true
+
   apt_conf_d:
     30release:
       'APT::Default-Release': stable
@@ -126,6 +129,13 @@ apt:
       opts:
         trusted: 'yes'
         another: whatever
+    saltstack:
+      distro: stable
+      url: https://packages.broadcom.com/artifactory/saltproject-deb
+      comps: [main]
+      type: [binary]
+      key_url: https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public  # yamllint disable-line rule:line-length
+      opts: "signed-by=/etc/apt/keyrings/salt-archive-keyring.pgp"
 
   preferences:
     00-rspamd:
