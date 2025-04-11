@@ -25,15 +25,10 @@ control 'Apt repositories' do
     its('mode') { should cmp '0755' }
   end
 
-  describe file('/etc/apt/sources.list.d/multimedia-stable-binary.list') do
+  describe file('/etc/apt/sources.list.d/unmanaged.list') do
     it { should exist }
-    it { should be_owned_by 'root' }
-    it { should be_grouped_into 'root' }
-    its('mode') { should cmp '0644' }
     its(:content) do
-      should match(
-        %r{deb \[arch=amd64\] http://www.deb-multimedia.org stable main}
-      )
+      should match("## unmanged list file that shouldn't be removed")
     end
   end
 
