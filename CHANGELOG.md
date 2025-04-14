@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.2](https://github.com/saltstack-formulas/apt-formula/compare/v0.11.1...v0.11.2) (2025-04-14)
+
+
+### Bug Fixes
+
+* **repositories:** force aptkey if signed-by and allow aptkey ([3e11c59](https://github.com/saltstack-formulas/apt-formula/commit/3e11c5999255f22f36e1fd63e10e9e553ed3f538))
+
 ## [0.11.1](https://github.com/saltstack-formulas/apt-formula/compare/v0.11.0...v0.11.1) (2025-04-10)
 
 
