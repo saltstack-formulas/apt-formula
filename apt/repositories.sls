@@ -95,6 +95,12 @@
     {% endif %}
     - onchanges_in:
       - module: apt.refresh_db
+  file.managed:
+    - name: {{ sources_list_dir }}/{{ r_file }}
+    - create: False
+    - replace: False
+    - require_in:
+      - file: {{ sources_list_dir }}
 
   {%- endfor %}
 {% endfor %}
