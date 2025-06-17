@@ -32,7 +32,7 @@
     - group: root
     - mode: '0644'
     - context:
-        data: {{ contents }}
+        data: {{ contents|json }}
     - require_in:
       - file: {{ confd_dir }}
 {% endfor %}
