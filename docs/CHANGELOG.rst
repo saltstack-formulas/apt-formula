@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`0.12.0 <https://github.com/saltstack-formulas/apt-formula/compare/v0.11.2...v0.12.0>`_ (2025-06-26)
+--------------------------------------------------------------------------------------------------------
+
+Features
+^^^^^^^^
+
+
+* **repositories:** stop removing sources files and support unmanaged (\ `6687a12 <https://github.com/saltstack-formulas/apt-formula/commit/6687a12f42b28fac7b170c03c150ec45f1c9acff>`_\ )
+
 `0.11.2 <https://github.com/saltstack-formulas/apt-formula/compare/v0.11.1...v0.11.2>`_ (2025-04-14)
 --------------------------------------------------------------------------------------------------------
 
