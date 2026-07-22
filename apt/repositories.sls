@@ -81,6 +81,7 @@
 {%- set r_distro = args.distro or 'stable' %}
 {%- set r_comps = args.comps|default(['main'])|join(' ') %}
 {%- set r_keyserver = args.keyserver if args.keyserver is defined else apt_map.default_keyserver %}
+{%- set r_signedby_file = r_opts.split() | select ('match', '^signed-by=') | map('replace', 'signed-by=', '') | first | default(none) %}
 
   {%- for type in args.type|d(['binary']) %}
     {%- set r_type = 'deb-src' if type == 'source' else 'deb' %}
@@ -114,11 +115,20 @@
   file.managed:
     - name: {{ sources_list_dir }}/{{ r_file }}
     - replace: false
+    - mode: '644'
     - require_in:
       - file: {{ sources_list_dir }}
       # require_in the directory clean state
       # This way, we don't remove all the files, just to add them again.
   {%- endfor %}
+
+  {% if signedby_file %}
+{{ repo }} {{ signedby_file }}:
+  file.managed:
+    - name: {{ signedby_file }}
+    - replace: false
+    - mode: '644'
+  {%- endif %}
 {% endfor %}
 
 {% if repositories %}
