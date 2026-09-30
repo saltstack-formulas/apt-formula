@@ -22,7 +22,9 @@ apt:
       distro: stable
       url: http://archive.raspbian.org/raspbian
       type: [source]
-      key_url: https://archive.raspbian.org/raspbian.public.key
+      key_url: "https://raw.githubusercontent.com/saltstack-formulas/apt-formula/\
+                 e186bc5c0cd91b0a2bc0fe20ced5be5c79470795/test/salt/states/files/\
+                 raspbian.public.key"
     saltstack:
       filename: saltstack.list
       distro: stable
