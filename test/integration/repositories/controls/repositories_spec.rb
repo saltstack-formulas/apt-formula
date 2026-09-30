@@ -39,7 +39,11 @@ control 'Apt repositories' do
     its('mode') { should cmp '0644' }
     its(:content) do
       should match(
-        %r{deb \[arch=amd64\] https://cli-assets.heroku.com/apt ./}
+        %r{
+          deb\ \[arch=amd64
+          (?:\ signed-by=/etc/apt/keyrings/heroku-archive-keyring\.gpg)?
+          \]\ https://cli-assets\.heroku\.com/apt\ \./
+        }x
       )
     end
   end
@@ -51,7 +55,11 @@ control 'Apt repositories' do
     its('mode') { should cmp '0644' }
     its(:content) do
       should match(
-        %r{deb-src http://archive.raspbian.org/raspbian stable main}
+        %r{
+          deb-src
+          \ (?:\[signed-by=/etc/apt/keyrings/raspbian-archive-keyring\.gpg\]\ )?
+          http://archive\.raspbian\.org/raspbian\ stable\ main
+        }x
       )
     end
   end

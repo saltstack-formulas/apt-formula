@@ -9,47 +9,86 @@
   only_branch_master_parent_repo: &only_branch_master_parent_repo
     - 'master@saltstack-formulas/apt-formula'
   # `stage`
+  stage_cache: &stage_cache 'cache'
   stage_lint: &stage_lint 'lint'
   stage_release: &stage_release 'release'
   stage_test: &stage_test 'test'
   # `image`
-  image_commitlint: &image_commitlint 'techneg/ci-commitlint:v1.1.76'
-  image_dindruby: &image_dindruby 'techneg/ci-docker-python-ruby:v2.2.45'
-  image_dindrubybionic: &image_dindrubybionic 'techneg/ci-docker-python-ruby:v2.2.45'
-  image_precommit: &image_precommit 'techneg/ci-pre-commit:v2.4.10'
-  image_rubocop: &image_rubocop 'pipelinecomponents/rubocop:latest'
-  image_semantic-release: &image_semanticrelease 'myii/ssf-semantic-release:15.14'
+  # yamllint disable rule:line-length
+  image_commitlint: &image_commitlint 'techneg/ci-commitlint:v1.1.156@sha256:90b61f1eadad21123849ef29ee63ba796aa74be868942fb4e623efd6ced4b624'
+  image_dindruby: &image_dindruby 'techneg/ci-docker-python-ruby:v2.2.125@sha256:216120abc59355bd84b9dcad97d10f40884dbc41139971605eb8474f1a9e00b9'
+  image_dindrubybionic: &image_dindrubybionic 'techneg/ci-docker-python-ruby:v2.2.125@sha256:216120abc59355bd84b9dcad97d10f40884dbc41139971605eb8474f1a9e00b9'
+  image_precommit: &image_precommit 'techneg/ci-pre-commit:v2.5.58@sha256:56e0bf7d16560020b738a2378240643ccb399350a540e906ca1e27009ffe2d68'
+  image_semantic-release: &image_semanticrelease 'techneg/ci-semantic-release:v1.2.58@sha256:723edbddfa534c7c137f09adec5fb2dfd6286d3fcb9c63688d7e5265ca4dd77e'
   # `services`
   services_docker_dind: &services_docker_dind
-    - 'docker:dind'
+    - 'docker:29.8.0-dind@sha256:5efed980cba3fc126cf54e21a5a6ff8849d05b6e0623d6e7612f48e9cd6cd17e'
+  # yamllint enable rule:line-length
   # `variables`
   # https://forum.gitlab.com/t/gitlab-com-ci-caching-rubygems/5627/3
-  # https://bundler.io/v1.16/bundle_config.html
+  # https://bundler.io/v2.3/man/bundle-config.1.html
   variables_bundler: &variables_bundler
-    BUNDLE_CACHE_PATH: '${CI_PROJECT_DIR}/.cache/bundler'
-    BUNDLE_WITHOUT: 'production'
-  # `cache`
+    BUNDLE_PATH: '${CI_PROJECT_DIR}/.cache/bundler'
+    BUNDLE_DEPLOYMENT: 'true'
+  bundle_install: &bundle_install
+    - 'bundle version'
+    - 'bundle config list'
+    # `--no-cache` means don't bother caching the downloaded .gem files
+    - 'time bundle install --no-cache'
   cache_bundler: &cache_bundler
-    key: '${CI_JOB_STAGE}'
+    key:
+      files:
+        - 'Gemfile.lock'
+      prefix: 'bundler'
     paths:
-      - '${BUNDLE_CACHE_PATH}'
+      - '${BUNDLE_PATH}'
+  # https://pre-commit.com/#gitlab-ci-example
+  variables_pre-commit: &variables_pre-commit
+    PRE_COMMIT_HOME: '${CI_PROJECT_DIR}/.cache/pre-commit'
+  cache_pre-commit: &cache_pre-commit
+    key:
+      files:
+        - '.pre-commit-config.yaml'
+      prefix: 'pre-commit'
+    paths:
+      - '${PRE_COMMIT_HOME}'
 
 ###############################################################################
 # Define stages and global variables
 ###############################################################################
 stages:
+  - *stage_cache
   - *stage_lint
   - *stage_test
   - *stage_release
 variables:
   DOCKER_DRIVER: 'overlay2'
 
+
 ###############################################################################
-# `lint` stage: `commitlint`, `pre-commit` & `rubocop` (latest, failure allowed)
+# `cache` stage: build up the bundler cache required before the `test` stage
 ###############################################################################
-commitlint:
+build-cache:
+  stage: *stage_cache
+  image: *image_dindruby
+  variables: *variables_bundler
+  cache: *cache_bundler
+  script: *bundle_install
+
+###############################################################################
+# `lint` stage: `commitlint`, `pre-commit`
+###############################################################################
+.lint_job:
   stage: *stage_lint
+  needs: []
+
+commitlint:
+  extends: '.lint_job'
   image: *image_commitlint
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      when: never
+    - when: on_success
   script:
     # Add `upstream` remote to get access to `upstream/master`
     - 'git remote add upstream
@@ -58,45 +97,20 @@ commitlint:
     # Set default commit hashes for `--from` and `--to`
     - 'export COMMITLINT_FROM="$(git merge-base upstream/master HEAD)"'
     - 'export COMMITLINT_TO="${CI_COMMIT_SHA}"'
-    # `coqbot` adds a merge commit to test PRs on top of the latest commit in
-    # the repo; amend this merge commit message to avoid failure
-    - |
-      if [ "${GITLAB_USER_LOGIN}" = "coqbot" ] \
-      && [ "${CI_COMMIT_BRANCH}" != "master" ]; then
-        git commit --amend -m \
-          'chore: reword coqbot merge commit message for commitlint'
-        export COMMITLINT_TO=HEAD
-      fi
     # Run `commitlint`
     - 'commitlint --from "${COMMITLINT_FROM}"
                   --to   "${COMMITLINT_TO}"
                   --verbose'
 
 pre-commit:
-  stage: *stage_lint
+  extends: '.lint_job'
   image: *image_precommit
   # https://pre-commit.com/#gitlab-ci-example
-  variables:
-    PRE_COMMIT_HOME: '${CI_PROJECT_DIR}/.cache/pre-commit'
-  cache:
-    key: '${CI_JOB_NAME}'
-    paths:
-      - '${PRE_COMMIT_HOME}'
+  variables: *variables_pre-commit
+  cache: *cache_pre-commit
   script:
     - 'pre-commit run --all-files --color always --verbose'
-
-# Use a separate job for `rubocop` other than the one potentially run by `pre-commit`
-# - The `pre-commit` check will only be available for formulas that pass the default
-#   `rubocop` check -- and must continue to do so
-# - This job is allowed to fail, so can be used for all formulas
-# - Furthermore, this job uses all of the latest `rubocop` features & cops,
-#   which will help when upgrading the `rubocop` linter used in `pre-commit`
-rubocop:
-  allow_failure: true
-  stage: *stage_lint
-  image: *image_rubocop
-  script:
-    - 'rubocop -d -P -S --enable-pending-cops'
+    - 'pre-commit run --color always --hook-stage manual commitlint-ci'
 
 ###############################################################################
 # Define `test` template
@@ -106,15 +120,13 @@ rubocop:
   image: *image_dindruby
   services: *services_docker_dind
   variables: *variables_bundler
-  cache: *cache_bundler
-  before_script:
-    # TODO: This should work from the env vars above automatically
-    - 'bundle config set path "${BUNDLE_CACHE_PATH}"'
-    - 'bundle config set without "${BUNDLE_WITHOUT}"'
-    - 'bundle install'
+  cache:
+    <<: *cache_bundler
+    policy: 'pull'
+  before_script: *bundle_install
   script:
-    # Alternative value to consider: `${CI_JOB_NAME}`
-    - 'bin/kitchen verify "${DOCKER_ENV_CI_JOB_NAME}"'
+    - 'echo "Starting test job: ${CI_JOB_NAME}"'
+    - 'bin/kitchen verify "${CI_JOB_NAME}"'
 
 ###############################################################################
 # Define `test` template (`allow_failure: true`)
@@ -130,31 +142,36 @@ rubocop:
 # Make sure the instances listed below match up with
 # the `platforms` defined in `kitchen.yml`
 # yamllint disable rule:line-length
-debian-12-master-py3: {extends: '.test_instance'}
-debian-11-master-py3: {extends: '.test_instance'}
-ubuntu-2404-master-py3: {extends: '.test_instance'}
-ubuntu-2204-master-py3: {extends: '.test_instance'}
-debian-12-3007-1-py3: {extends: '.test_instance'}
-debian-11-3007-1-py3: {extends: '.test_instance'}
-ubuntu-2404-3007-1-py3: {extends: '.test_instance'}
-ubuntu-2204-3007-1-py3: {extends: '.test_instance'}
-debian-12-3006-10-py3: {extends: '.test_instance'}
-debian-11-3006-10-py3: {extends: '.test_instance'}
-ubuntu-2404-3006-10-py3: {extends: '.test_instance'}
-ubuntu-2204-3006-10-py3: {extends: '.test_instance'}
+# Fedora 41+ will permit failure until this PR is merged into kitchen-docker
+# https://github.com/test-kitchen/kitchen-docker/pull/427 is merged
+# OpenSUSE master branch will fail until zypperpkg module is back in salt core
+# https://github.com/saltstack/great-module-migration/issues/14
+#
+debian-13-master: {extends: '.test_instance_failure_permitted'}
+debian-12-master: {extends: '.test_instance_failure_permitted'}
+ubuntu-2604-master: {extends: '.test_instance_failure_permitted'}
+ubuntu-2404-master: {extends: '.test_instance_failure_permitted'}
+ubuntu-2204-master: {extends: '.test_instance_failure_permitted'}
+debian-13-3008: {extends: '.test_instance'}
+debian-12-3008: {extends: '.test_instance'}
+ubuntu-2604-3008: {extends: '.test_instance'}
+ubuntu-2404-3008: {extends: '.test_instance'}
+ubuntu-2204-3008: {extends: '.test_instance'}
+debian-13-3006: {extends: '.test_instance'}
+debian-12-3006: {extends: '.test_instance'}
+ubuntu-2604-3006: {extends: '.test_instance'}
+ubuntu-2404-3006: {extends: '.test_instance'}
+ubuntu-2204-3006: {extends: '.test_instance'}
 # yamllint enable rule:line-length
 
 ###############################################################################
 # `release` stage: `semantic-release`
 ###############################################################################
 semantic-release:
-  only: *only_branch_master_parent_repo
   stage: *stage_release
   image: *image_semanticrelease
   variables:
     MAINTAINER_TOKEN: '${GH_TOKEN}'
   script:
-    # Update `AUTHORS.md`
-    - '${HOME}/go/bin/maintainer contributor'
     # Run `semantic-release`
     - 'semantic-release'
