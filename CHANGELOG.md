@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.12.1](https://github.com/saltstack-formulas/apt-formula/compare/v0.12.0...v0.12.1) (2026-09-30)
+
+### Bug Fixes
+
+* **map.jinja:** fix debian security repo url ([6d36170](https://github.com/saltstack-formulas/apt-formula/commit/6d3617077016166bebe4721bdd08c69cf260119a))
+
+### Testing
+
+* account for `apt-key` removal in Debian 13 ([e39f946](https://github.com/saltstack-formulas/apt-formula/commit/e39f94608bcf9b1a9af834e182d718447f7bcd11))
+
+### Maintenance
+
+* add `raspian.public.key` to the test fixture ([b29f73e](https://github.com/saltstack-formulas/apt-formula/commit/b29f73e0424c06bd0d398173832b0a404657ec14))
+* **copier:** apply template `https://github.com/dafydd/copier-ssf-ci` at v2.11.13 ([e2efcf2](https://github.com/saltstack-formulas/apt-formula/commit/e2efcf21319b1c496ca11c8e5977726a178cec9b))
+
 # [0.12.0](https://github.com/saltstack-formulas/apt-formula/compare/v0.11.2...v0.12.0) (2025-06-26)
 
 
