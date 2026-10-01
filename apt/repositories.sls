@@ -8,6 +8,7 @@
 {% set clean_keyrings_d = apt.get('clean_keyrings_d', apt_map.clean_keyrings_d) %}
 {% set default_url = apt.get('default_url', apt_map.default_url) %}
 {% set keyring_package = apt.get('keyring_package', apt_map.default_keyring_package) %}
+{% set mode_sources_list = apt.get('mode_sources_list', apt_map.mode_sources_list ) %}
 
 {{ keyring_package }}:
   pkg.installed:
@@ -55,6 +56,8 @@
     - group: root
     - clean: {{ clean_keyrings_d }}
 
+{% set signedby_files = [] %}
+
 {% for repo, args in repositories.items() %}
 
 {% set r_opts = '' %}
@@ -81,6 +84,7 @@
 {%- set r_distro = args.distro or 'stable' %}
 {%- set r_comps = args.comps|default(['main'])|join(' ') %}
 {%- set r_keyserver = args.keyserver if args.keyserver is defined else apt_map.default_keyserver %}
+{%- set r_signedby_file = r_opts.split() | select ('match', '^signed-by=') | map('replace', 'signed-by=', '') | first | default(none) %}
 
   {%- for type in args.type|d(['binary']) %}
     {%- set r_type = 'deb-src' if type == 'source' else 'deb' %}
@@ -114,11 +118,31 @@
   file.managed:
     - name: {{ sources_list_dir }}/{{ r_file }}
     - replace: false
+    - mode: {{ mode_sources_list }}
+    - user: root
+    - group: root
     - require_in:
       - file: {{ sources_list_dir }}
       # require_in the directory clean state
       # This way, we don't remove all the files, just to add them again.
   {%- endfor %}
+
+  {% if r_signedby_file %}
+    {% do signedby_files.append(r_signedby_file) %}
+  {%- endif %}
+{% endfor %}
+
+{% for signedby_file in signedby_files | unique %}
+{{ signedby_file }}:
+  file.managed:
+    - name: {{ signedby_file }}
+    - replace: false
+    - mode: '0644'
+    # The above permissions are not configurable because 'apt' drops privileges
+    # when doing key verification, even when running as root it is important 
+    # that these keys are readable for everyone.
+    - user: root
+    - group: root
 {% endfor %}
 
 {% if repositories %}
