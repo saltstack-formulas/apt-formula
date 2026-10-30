@@ -10,6 +10,7 @@ apt:
 
   remove_sources_list: true
   clean_sources_list_d: true
+  mode_sources_list: '0644'
 
   remove_preferences: true
   clean_preferences_d: true
